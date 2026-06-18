@@ -57,6 +57,8 @@ class Bot:
         except ImportError:
             METHOD_GROUPS = {}
         for group_name, namespace_cls in METHOD_GROUPS.items():
+            if group_name == "api":
+                continue
             namespace = namespace_cls(self)
             self._namespaces[group_name] = namespace
             setattr(self, group_name, namespace)

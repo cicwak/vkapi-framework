@@ -58,6 +58,44 @@ async def test_bot_namespace_uses_generated_method() -> None:
     assert session.calls == [
         (
             "messages.send",
+            {
+                "access_token": "token",
+                "v": "5.199",
+                "peer_id": 1,
+                "random_id": 0,
+                "message": "hi",
+            },
+        ),
+    ]
+
+
+@pytest.mark.asyncio
+async def test_bot_raw_api_is_not_overridden_by_generated_execute_namespace() -> None:
+    session = FakeSession(result={"ok": True})
+    bot = Bot("token", group_id=1, session=session, rate_limit=None)
+
+    result = await bot.api("execute", code="return 1;")
+
+    assert result == {"ok": True}
+    assert session.calls == [
+        (
+            "execute",
+            {"access_token": "token", "v": "5.199", "code": "return 1;"},
+        ),
+    ]
+
+
+@pytest.mark.asyncio
+async def test_bot_send_message_uses_raw_api_helper() -> None:
+    session = FakeSession(result=321)
+    bot = Bot("token", group_id=1, session=session, rate_limit=None)
+
+    result = await bot.send_message(peer_id=1, random_id=0, message="hi")
+
+    assert result == 321
+    assert session.calls == [
+        (
+            "messages.send",
             {"access_token": "token", "v": "5.199", "peer_id": 1, "random_id": 0, "message": "hi"},
         ),
     ]

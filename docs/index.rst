@@ -7,6 +7,7 @@ Async-first VK API SDK and bot framework inspired by aiogram 3.
    :maxdepth: 2
 
    intro
+   methods
    api
 
 * :ref:`genindex`
