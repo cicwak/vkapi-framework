@@ -33,10 +33,13 @@ class Text(Filter):
 
         if self.text is not None and probe != norm(self.text):
             return False
-        if self.contains is not None and norm(self.contains) not in probe:
+        contains = norm(self.contains)
+        if contains is not None and contains not in probe:
             return False
-        if self.startswith is not None and not probe.startswith(norm(self.startswith) or ""):
+        startswith = norm(self.startswith)
+        if startswith is not None and not probe.startswith(startswith):
             return False
-        if self.endswith is not None and not probe.endswith(norm(self.endswith) or ""):
+        endswith = norm(self.endswith)
+        if endswith is not None and not probe.endswith(endswith):
             return False
         return not (self.predicate is not None and not self.predicate(value))

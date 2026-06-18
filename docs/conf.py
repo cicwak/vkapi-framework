@@ -7,10 +7,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 project = "vkapi"
+distribution = "vkapi-framework"
 copyright = "2026, Konstantin Ponomarev"
 author = "Konstantin Ponomarev"
 
-release = package_version("vkapi")
+release = package_version(distribution)
 version = ".".join(release.split(".")[:2])
 
 extensions = [

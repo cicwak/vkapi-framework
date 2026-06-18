@@ -2,12 +2,12 @@ from __future__ import annotations
 
 import inspect
 from collections.abc import Callable
-from typing import Any, TypeVar, get_args, get_origin, get_type_hints
+from typing import Any, Generic, TypeVar, get_args, get_origin, get_type_hints
 
 T = TypeVar("T")
 
 
-class Depends:
+class Depends(Generic[T]):
     def __init__(self, dependency: Callable[..., T], *, use_cache: bool = True) -> None:
         self.dependency = dependency
         self.use_cache = use_cache

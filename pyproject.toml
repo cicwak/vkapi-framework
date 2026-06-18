@@ -3,22 +3,29 @@ requires = ["hatchling>=1.26"]
 build-backend = "hatchling.build"
 
 [project]
-name = "vkapi"
+name = "vkapi-framework"
 version = "0.1.0"
 description = "Async-first VK API SDK and bot framework inspired by aiogram 3"
 readme = "README.md"
 requires-python = ">=3.11,<3.15"
 license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Konstantin Ponomarev", email = "cicwak@gmail.com" }]
 keywords = ["vk", "vkontakte", "api", "bot", "asyncio", "sdk"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Framework :: AsyncIO",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
   "Typing :: Typed",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Topic :: Communications :: Chat",
+  "Topic :: Internet",
+  "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
   "aiohttp>=3.9,<4",
@@ -30,12 +37,33 @@ dependencies = [
 fast = ["orjson>=3.10"]
 redis = ["redis[hiredis]>=5,<8"]
 docs = ["sphinx>=7"]
+release = [
+  "build>=1.2",
+  "twine>=6.0",
+]
 dev = [
   "pytest>=8",
   "pytest-asyncio>=0.23",
   "ruff>=0.8",
   "mypy>=1.13",
   "pyrefly>=1",
+  "build>=1.2",
+  "twine>=6.0",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/CHANGELOG.md",
+  "/LICENSE",
+  "/README.md",
+  "/docs",
+  "/pyproject.toml",
+  "/scripts",
+  "/src/vkapi",
+  "/tests",
+]
+exclude = [
+  "/docs/_build",
 ]
 
 [tool.hatch.build.targets.wheel]
