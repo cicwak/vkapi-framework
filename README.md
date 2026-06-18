@@ -36,6 +36,11 @@ The first implementation focuses on community Bots Long Poll, typed method objec
 raw VK API fallback, routers, filters, middlewares, dependency injection, keyboards,
 and common upload flows.
 
+## Documentation
+
+- Method guide and examples: [`docs/methods.rst`](docs/methods.rst)
+- API reference: [`docs/api.rst`](docs/api.rst)
+
 ## Requirements
 
 - Python 3.11-3.14
