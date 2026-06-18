@@ -3,10 +3,10 @@ from __future__ import annotations
 import asyncio
 import contextlib
 import signal
-from collections.abc import AsyncGenerator
+from collections.abc import AsyncGenerator, Awaitable
 from typing import Any
 
-from aiohttp import ClientError, ClientSession
+from aiohttp import ClientError, ClientSession, ClientTimeout
 
 from vkapi.client.bot import Bot
 from vkapi.dispatcher.event.bases import UNHANDLED
@@ -75,7 +75,7 @@ class Dispatcher(Router):
                     async with session.get(
                         server,
                         params={"act": "a_check", "key": key, "ts": ts, "wait": polling_timeout},
-                        timeout=polling_timeout + 10,
+                        timeout=ClientTimeout(total=polling_timeout + 10),
                     ) as response:
                         payload = await response.json()
                 except (TimeoutError, ClientError):
@@ -123,7 +123,7 @@ class Dispatcher(Router):
             if semaphore is not None:
                 await semaphore.acquire()
 
-                async def limited(handle_update=coro) -> bool:
+                async def limited(handle_update: Awaitable[bool] = coro) -> bool:
                     try:
                         return await handle_update
                     finally:

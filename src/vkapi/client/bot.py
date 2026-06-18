@@ -6,7 +6,7 @@ from typing import Any, TypeVar, cast
 from vkapi.client.session.aiohttp import AiohttpSession
 from vkapi.client.session.base import BaseSession
 from vkapi.exceptions import VKAPIResponseError, VKRateLimitError
-from vkapi.methods.base import RawMethod, VKMethod
+from vkapi.methods.base import MethodT, RawMethod
 from vkapi.rate_limit import AsyncRateLimiter
 
 T = TypeVar("T")
@@ -71,7 +71,7 @@ class Bot:
 
     async def __call__(
         self,
-        method: VKMethod[T] | RawMethod[T],
+        method: MethodT[T],
         *,
         request_timeout: float | None = None,
     ) -> T:

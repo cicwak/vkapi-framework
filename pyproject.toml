@@ -29,11 +29,13 @@ dependencies = [
 [project.optional-dependencies]
 fast = ["orjson>=3.10"]
 redis = ["redis[hiredis]>=5,<8"]
+docs = ["sphinx>=7"]
 dev = [
   "pytest>=8",
   "pytest-asyncio>=0.23",
   "ruff>=0.8",
   "mypy>=1.13",
+  "pyrefly>=1",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -59,10 +61,29 @@ known-first-party = ["vkapi"]
 
 [tool.ruff.lint.per-file-ignores]
 "src/vkapi/methods/generated.py" = ["E501"]
+"docs/conf.py" = ["A001"]
 
 [tool.mypy]
 python_version = "3.11"
+files = ["src", "tests", "scripts"]
 plugins = ["pydantic.mypy"]
 show_error_codes = true
-ignore_missing_imports = true
-strict = false
+show_error_context = true
+pretty = true
+strict = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+no_implicit_reexport = true
+extra_checks = true
+
+[tool.pyrefly]
+project-includes = ["src", "tests", "scripts"]
+project-excludes = ["docs/_build", "dist", "build"]
+search-path = ["src"]
+python-version = "3.11"
+python-platform = "linux"
+ignore-errors-in-generated-code = true

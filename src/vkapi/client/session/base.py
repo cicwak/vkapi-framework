@@ -9,10 +9,10 @@ from vkapi.exceptions import VKDecodeError, make_api_error
 
 if TYPE_CHECKING:
     from vkapi.client.bot import Bot
-    from vkapi.methods.base import VKMethod
+    from vkapi.methods.base import MethodT
 
 T = TypeVar("T")
-RequestHandler = Callable[["Bot", "VKMethod[Any]", float | None], Awaitable[Any]]
+RequestHandler = Callable[["Bot", "MethodT[Any]", float | None], Awaitable[Any]]
 RequestMiddleware = Callable[[RequestHandler], RequestHandler]
 
 
@@ -82,7 +82,7 @@ class BaseSession(abc.ABC):
             return self.json_dumps(value)
         return str(value)
 
-    def prepare_params(self, bot: Bot, method: VKMethod[Any]) -> dict[str, Any]:
+    def prepare_params(self, bot: Bot, method: MethodT[Any]) -> dict[str, Any]:
         params: dict[str, Any] = {
             "access_token": bot.token,
             "v": bot.api_version,
@@ -101,7 +101,7 @@ class BaseSession(abc.ABC):
     async def make_request(
         self,
         bot: Bot,
-        method: VKMethod[T],
+        method: MethodT[T],
         timeout: float | None = None,
     ) -> T:
         """Make one VK API request."""
@@ -119,7 +119,7 @@ class BaseSession(abc.ABC):
     async def __call__(
         self,
         bot: Bot,
-        method: VKMethod[T],
+        method: MethodT[T],
         timeout: float | None = None,
     ) -> T:
         wrapped = self.middleware.wrap(cast(RequestHandler, self.make_request))

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Iterator
 from typing import Any, Protocol
 
 
@@ -24,7 +24,7 @@ class MiddlewareManager:
     def __call__(self, middleware: Middleware) -> Middleware:
         return self.register(middleware)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Middleware]:
         return iter(self._middlewares)
 
     def wrap(
@@ -40,7 +40,7 @@ class MiddlewareManager:
                 event: Any,
                 data: dict[str, Any],
                 mw: Middleware = middleware,
-                nxt=current,
+                nxt: Callable[[Any, dict[str, Any]], Awaitable[Any]] = current,
             ) -> Any:
                 return await mw(nxt, event, data)
 

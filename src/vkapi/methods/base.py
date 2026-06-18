@@ -50,3 +50,6 @@ class VKMethod(BaseModel, Generic[T]):
         if self._bot is None:
             raise RuntimeError("Method is not mounted to a Bot. Use `await bot(method)`.")
         return self.emit(self._bot).__await__()
+
+
+MethodT = VKMethod[T] | RawMethod[T]

@@ -21,7 +21,7 @@ class AccountChangePassword(VKMethod[Any]):
     restore_sid: str | None = None
     change_password_hash: str | None = None
     old_password: str | None = None
-    new_password: str = ...
+    new_password: str = Field(...)
 
 class AccountGetActiveOffers(VKMethod[Any]):
     __api_method__ = 'account.getActiveOffers'
@@ -56,10 +56,10 @@ class AccountGetPushSettings(VKMethod[Any]):
 
 class AccountRegisterDevice(VKMethod[Any]):
     __api_method__ = 'account.registerDevice'
-    token: str = ...
+    token: str = Field(...)
     device_model: str | None = None
     device_year: int | None = None
-    device_id: str = ...
+    device_id: str = Field(...)
     system_version: str | None = None
     settings: str | None = None
     sandbox: bool | None = None
@@ -97,7 +97,7 @@ class AccountSetOnline(VKMethod[Any]):
 
 class AccountSetPushSettings(VKMethod[Any]):
     __api_method__ = 'account.setPushSettings'
-    device_id: str = ...
+    device_id: str = Field(...)
     settings: str | None = None
     key: str | None = None
     value: list[Any] | None = None
@@ -120,81 +120,81 @@ class AccountUnregisterDevice(VKMethod[Any]):
 
 class AdsAddOfficeUsers(VKMethod[Any]):
     __api_method__ = 'ads.addOfficeUsers'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsCheckLink(VKMethod[Any]):
     __api_method__ = 'ads.checkLink'
-    account_id: int = ...
-    link_type: str = ...
-    link_url: str = ...
+    account_id: int = Field(...)
+    link_type: str = Field(...)
+    link_url: str = Field(...)
     campaign_id: int | None = None
 
 class AdsCreateAds(VKMethod[Any]):
     __api_method__ = 'ads.createAds'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsCreateCampaigns(VKMethod[Any]):
     __api_method__ = 'ads.createCampaigns'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsCreateClients(VKMethod[Any]):
     __api_method__ = 'ads.createClients'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsCreateLookalikeRequest(VKMethod[Any]):
     __api_method__ = 'ads.createLookalikeRequest'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    source_type: str = ...
+    source_type: str = Field(...)
     retargeting_group_id: int | None = None
 
 class AdsCreateTargetGroup(VKMethod[Any]):
     __api_method__ = 'ads.createTargetGroup'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    name: str = ...
-    lifetime: int = ...
+    name: str = Field(...)
+    lifetime: int = Field(...)
     target_pixel_id: int | None = None
     target_pixel_rules: str | None = None
 
 class AdsCreateTargetPixel(VKMethod[Any]):
     __api_method__ = 'ads.createTargetPixel'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    name: str = ...
+    name: str = Field(...)
     domain: str | None = None
-    category_id: int = ...
+    category_id: int = Field(...)
 
 class AdsDeleteAds(VKMethod[Any]):
     __api_method__ = 'ads.deleteAds'
-    account_id: int = ...
-    ids: str = ...
+    account_id: int = Field(...)
+    ids: str = Field(...)
 
 class AdsDeleteCampaigns(VKMethod[Any]):
     __api_method__ = 'ads.deleteCampaigns'
-    account_id: int = ...
-    ids: str = ...
+    account_id: int = Field(...)
+    ids: str = Field(...)
 
 class AdsDeleteClients(VKMethod[Any]):
     __api_method__ = 'ads.deleteClients'
-    account_id: int = ...
-    ids: str = ...
+    account_id: int = Field(...)
+    ids: str = Field(...)
 
 class AdsDeleteTargetGroup(VKMethod[Any]):
     __api_method__ = 'ads.deleteTargetGroup'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_group_id: int = ...
+    target_group_id: int = Field(...)
 
 class AdsDeleteTargetPixel(VKMethod[Any]):
     __api_method__ = 'ads.deleteTargetPixel'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_pixel_id: int = ...
+    target_pixel_id: int = Field(...)
 
 class AdsGetAccounts(VKMethod[Any]):
     __api_method__ = 'ads.getAccounts'
@@ -202,7 +202,7 @@ class AdsGetAccounts(VKMethod[Any]):
 
 class AdsGetAds(VKMethod[Any]):
     __api_method__ = 'ads.getAds'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     include_deleted: bool | None = None
     only_deleted: bool | None = None
@@ -213,7 +213,7 @@ class AdsGetAds(VKMethod[Any]):
 
 class AdsGetAdsLayout(VKMethod[Any]):
     __api_method__ = 'ads.getAdsLayout'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     include_deleted: bool | None = None
     only_deleted: bool | None = None
@@ -224,7 +224,7 @@ class AdsGetAdsLayout(VKMethod[Any]):
 
 class AdsGetAdsTargeting(VKMethod[Any]):
     __api_method__ = 'ads.getAdsTargeting'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     include_deleted: bool | None = None
     only_deleted: bool | None = None
@@ -235,11 +235,11 @@ class AdsGetAdsTargeting(VKMethod[Any]):
 
 class AdsGetBudget(VKMethod[Any]):
     __api_method__ = 'ads.getBudget'
-    account_id: int = ...
+    account_id: int = Field(...)
 
 class AdsGetCampaigns(VKMethod[Any]):
     __api_method__ = 'ads.getCampaigns'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     include_deleted: bool | None = None
     campaign_ids: str | None = None
@@ -251,24 +251,24 @@ class AdsGetCategories(VKMethod[Any]):
 
 class AdsGetClients(VKMethod[Any]):
     __api_method__ = 'ads.getClients'
-    account_id: int = ...
+    account_id: int = Field(...)
 
 class AdsGetDemographics(VKMethod[Any]):
     __api_method__ = 'ads.getDemographics'
-    account_id: int = ...
-    ids_type: str = ...
-    ids: str = ...
-    period: str = ...
-    date_from: str = ...
-    date_to: str = ...
+    account_id: int = Field(...)
+    ids_type: str = Field(...)
+    ids: str = Field(...)
+    period: str = Field(...)
+    date_from: str = Field(...)
+    date_to: str = Field(...)
 
 class AdsGetFloodStats(VKMethod[Any]):
     __api_method__ = 'ads.getFloodStats'
-    account_id: int = ...
+    account_id: int = Field(...)
 
 class AdsGetLookalikeRequests(VKMethod[Any]):
     __api_method__ = 'ads.getLookalikeRequests'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     requests_ids: str | None = None
     offset: int | None = None
@@ -277,40 +277,40 @@ class AdsGetLookalikeRequests(VKMethod[Any]):
 
 class AdsGetMusicians(VKMethod[Any]):
     __api_method__ = 'ads.getMusicians'
-    artist_name: str = ...
+    artist_name: str = Field(...)
 
 class AdsGetMusiciansByIds(VKMethod[Any]):
     __api_method__ = 'ads.getMusiciansByIds'
-    ids: list[Any] = ...
+    ids: list[Any] = Field(...)
 
 class AdsGetOfficeUsers(VKMethod[Any]):
     __api_method__ = 'ads.getOfficeUsers'
-    account_id: int = ...
+    account_id: int = Field(...)
 
 class AdsGetPostsReach(VKMethod[Any]):
     __api_method__ = 'ads.getPostsReach'
-    account_id: int = ...
-    ids_type: str = ...
-    ids: str = ...
+    account_id: int = Field(...)
+    ids_type: str = Field(...)
+    ids: str = Field(...)
 
 class AdsGetRejectionReason(VKMethod[Any]):
     __api_method__ = 'ads.getRejectionReason'
-    account_id: int = ...
-    ad_id: int = ...
+    account_id: int = Field(...)
+    ad_id: int = Field(...)
 
 class AdsGetStatistics(VKMethod[Any]):
     __api_method__ = 'ads.getStatistics'
-    account_id: int = ...
-    ids_type: str = ...
-    ids: str = ...
-    period: str = ...
-    date_from: str = ...
-    date_to: str = ...
+    account_id: int = Field(...)
+    ids_type: str = Field(...)
+    ids: str = Field(...)
+    period: str = Field(...)
+    date_from: str = Field(...)
+    date_to: str = Field(...)
     stats_fields: list[Any] | None = None
 
 class AdsGetSuggestions(VKMethod[Any]):
     __api_method__ = 'ads.getSuggestions'
-    section: str = ...
+    section: str = Field(...)
     ids: str | None = None
     q: str | None = None
     country: int | None = None
@@ -319,18 +319,18 @@ class AdsGetSuggestions(VKMethod[Any]):
 
 class AdsGetTargetGroups(VKMethod[Any]):
     __api_method__ = 'ads.getTargetGroups'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     extended: bool | None = None
 
 class AdsGetTargetPixels(VKMethod[Any]):
     __api_method__ = 'ads.getTargetPixels'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
 
 class AdsGetTargetingStats(VKMethod[Any]):
     __api_method__ = 'ads.getTargetingStats'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
     criteria: str | None = None
     ad_id: int | None = None
@@ -339,14 +339,14 @@ class AdsGetTargetingStats(VKMethod[Any]):
     ad_platform_no_wall: str | None = None
     ad_platform_no_ad_network: str | None = None
     publisher_platforms: str | None = None
-    link_url: str = ...
+    link_url: str = Field(...)
     link_domain: str | None = None
     need_precise: bool | None = None
     impressions_limit_period: int | None = None
 
 class AdsGetUploadURL(VKMethod[Any]):
     __api_method__ = 'ads.getUploadURL'
-    ad_format: int = ...
+    ad_format: int = Field(...)
     icon: int | None = None
 
 class AdsGetVideoUploadURL(VKMethod[Any]):
@@ -355,80 +355,80 @@ class AdsGetVideoUploadURL(VKMethod[Any]):
 
 class AdsImportTargetContacts(VKMethod[Any]):
     __api_method__ = 'ads.importTargetContacts'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_group_id: int = ...
-    contacts: str = ...
+    target_group_id: int = Field(...)
+    contacts: str = Field(...)
 
 class AdsRemoveOfficeUsers(VKMethod[Any]):
     __api_method__ = 'ads.removeOfficeUsers'
-    account_id: int = ...
-    ids: str = ...
+    account_id: int = Field(...)
+    ids: str = Field(...)
 
 class AdsRemoveTargetContacts(VKMethod[Any]):
     __api_method__ = 'ads.removeTargetContacts'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_group_id: int = ...
-    contacts: str = ...
+    target_group_id: int = Field(...)
+    contacts: str = Field(...)
 
 class AdsSaveLookalikeRequestResult(VKMethod[Any]):
     __api_method__ = 'ads.saveLookalikeRequestResult'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    request_id: int = ...
-    level: int = ...
+    request_id: int = Field(...)
+    level: int = Field(...)
 
 class AdsShareTargetGroup(VKMethod[Any]):
     __api_method__ = 'ads.shareTargetGroup'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_group_id: int = ...
+    target_group_id: int = Field(...)
     share_with_client_id: int | None = None
 
 class AdsUpdateAds(VKMethod[Any]):
     __api_method__ = 'ads.updateAds'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsUpdateCampaigns(VKMethod[Any]):
     __api_method__ = 'ads.updateCampaigns'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsUpdateClients(VKMethod[Any]):
     __api_method__ = 'ads.updateClients'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsUpdateOfficeUsers(VKMethod[Any]):
     __api_method__ = 'ads.updateOfficeUsers'
-    account_id: int = ...
-    data: str = ...
+    account_id: int = Field(...)
+    data: str = Field(...)
 
 class AdsUpdateTargetGroup(VKMethod[Any]):
     __api_method__ = 'ads.updateTargetGroup'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_group_id: int = ...
-    name: str = ...
+    target_group_id: int = Field(...)
+    name: str = Field(...)
     domain: str | None = None
-    lifetime: int = ...
+    lifetime: int = Field(...)
     target_pixel_id: int | None = None
     target_pixel_rules: str | None = None
 
 class AdsUpdateTargetPixel(VKMethod[Any]):
     __api_method__ = 'ads.updateTargetPixel'
-    account_id: int = ...
+    account_id: int = Field(...)
     client_id: int | None = None
-    target_pixel_id: int = ...
-    name: str = ...
+    target_pixel_id: int = Field(...)
+    name: str = Field(...)
     domain: str | None = None
-    category_id: int = ...
+    category_id: int = Field(...)
 
 class AppWidgetsGetAppImageUploadServer(VKMethod[Any]):
     __api_method__ = 'appWidgets.getAppImageUploadServer'
-    image_type: str = ...
+    image_type: str = Field(...)
 
 class AppWidgetsGetAppImages(VKMethod[Any]):
     __api_method__ = 'appWidgets.getAppImages'
@@ -438,7 +438,7 @@ class AppWidgetsGetAppImages(VKMethod[Any]):
 
 class AppWidgetsGetGroupImageUploadServer(VKMethod[Any]):
     __api_method__ = 'appWidgets.getGroupImageUploadServer'
-    image_type: str = ...
+    image_type: str = Field(...)
 
 class AppWidgetsGetGroupImages(VKMethod[Any]):
     __api_method__ = 'appWidgets.getGroupImages'
@@ -448,22 +448,22 @@ class AppWidgetsGetGroupImages(VKMethod[Any]):
 
 class AppWidgetsGetImagesById(VKMethod[Any]):
     __api_method__ = 'appWidgets.getImagesById'
-    images: list[Any] = ...
+    images: list[Any] = Field(...)
 
 class AppWidgetsSaveAppImage(VKMethod[Any]):
     __api_method__ = 'appWidgets.saveAppImage'
-    hash: str = ...
-    image: str = ...
+    hash: str = Field(...)
+    image: str = Field(...)
 
 class AppWidgetsSaveGroupImage(VKMethod[Any]):
     __api_method__ = 'appWidgets.saveGroupImage'
-    hash: str = ...
-    image: str = ...
+    hash: str = Field(...)
+    image: str = Field(...)
 
 class AppWidgetsUpdate(VKMethod[Any]):
     __api_method__ = 'appWidgets.update'
-    code: str = ...
-    type: str = ...
+    code: str = Field(...)
+    type: str = Field(...)
 
 class AppsAddSnippet(VKMethod[Any]):
     __api_method__ = 'apps.addSnippet'
@@ -479,8 +479,8 @@ class AppsAddSnippet(VKMethod[Any]):
 
 class AppsAddUsersToTestingGroup(VKMethod[Any]):
     __api_method__ = 'apps.addUsersToTestingGroup'
-    user_ids: list[Any] = ...
-    group_id: int = ...
+    user_ids: list[Any] = Field(...)
+    group_id: int = Field(...)
 
 class AppsDeleteAppRequests(VKMethod[Any]):
     __api_method__ = 'apps.deleteAppRequests'
@@ -526,13 +526,13 @@ class AppsGetFriendsList(VKMethod[Any]):
 
 class AppsGetLeaderboard(VKMethod[Any]):
     __api_method__ = 'apps.getLeaderboard'
-    type: str = ...
-    global_: bool | None = Field(default=None, alias='global')
+    type: str = Field(...)
+    global_: bool | None = Field(None, alias='global')
     extended: bool | None = None
 
 class AppsGetMiniAppPolicies(VKMethod[Any]):
     __api_method__ = 'apps.getMiniAppPolicies'
-    app_id: int = ...
+    app_id: int = Field(...)
 
 class AppsGetScopes(VKMethod[Any]):
     __api_method__ = 'apps.getScopes'
@@ -556,25 +556,25 @@ class AppsIsNotificationsAllowed(VKMethod[Any]):
 
 class AppsPromoHasActiveGift(VKMethod[Any]):
     __api_method__ = 'apps.promoHasActiveGift'
-    promo_id: int = ...
+    promo_id: int = Field(...)
     user_id: int | None = None
 
 class AppsPromoUseGift(VKMethod[Any]):
     __api_method__ = 'apps.promoUseGift'
-    promo_id: int = ...
+    promo_id: int = Field(...)
     user_id: int | None = None
 
 class AppsRemoveTestingGroup(VKMethod[Any]):
     __api_method__ = 'apps.removeTestingGroup'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class AppsRemoveUsersFromTestingGroups(VKMethod[Any]):
     __api_method__ = 'apps.removeUsersFromTestingGroups'
-    user_ids: list[Any] = ...
+    user_ids: list[Any] = Field(...)
 
 class AppsSendRequest(VKMethod[Any]):
     __api_method__ = 'apps.sendRequest'
-    user_id: int = ...
+    user_id: int = Field(...)
     text: str | None = None
     type: str | None = None
     name: str | None = None
@@ -584,33 +584,33 @@ class AppsSendRequest(VKMethod[Any]):
 class AppsUpdateMetaForTestingGroup(VKMethod[Any]):
     __api_method__ = 'apps.updateMetaForTestingGroup'
     group_id: int | None = None
-    webview: str = ...
-    name: str = ...
-    platforms: list[Any] = ...
+    webview: str = Field(...)
+    name: str = Field(...)
+    platforms: list[Any] = Field(...)
     user_ids: list[Any] | None = None
 
 class AuthRestore(VKMethod[Any]):
     __api_method__ = 'auth.restore'
-    phone: str = ...
-    last_name: str = ...
+    phone: str = Field(...)
+    last_name: str = Field(...)
 
 class BoardAddTopic(VKMethod[Any]):
     __api_method__ = 'board.addTopic'
-    group_id: int = ...
-    title: str = ...
+    group_id: int = Field(...)
+    title: str = Field(...)
     text: str | None = None
     from_group: bool | None = None
     attachments: list[Any] | None = None
 
 class BoardCloseTopic(VKMethod[Any]):
     __api_method__ = 'board.closeTopic'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
 
 class BoardCreateComment(VKMethod[Any]):
     __api_method__ = 'board.createComment'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
     from_group: bool | None = None
@@ -619,38 +619,38 @@ class BoardCreateComment(VKMethod[Any]):
 
 class BoardDeleteComment(VKMethod[Any]):
     __api_method__ = 'board.deleteComment'
-    group_id: int = ...
-    topic_id: int = ...
-    comment_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
+    comment_id: int = Field(...)
 
 class BoardDeleteTopic(VKMethod[Any]):
     __api_method__ = 'board.deleteTopic'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
 
 class BoardEditComment(VKMethod[Any]):
     __api_method__ = 'board.editComment'
-    group_id: int = ...
-    topic_id: int = ...
-    comment_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
+    comment_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
 
 class BoardEditTopic(VKMethod[Any]):
     __api_method__ = 'board.editTopic'
-    group_id: int = ...
-    topic_id: int = ...
-    title: str = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
+    title: str = Field(...)
 
 class BoardFixTopic(VKMethod[Any]):
     __api_method__ = 'board.fixTopic'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
 
 class BoardGetComments(VKMethod[Any]):
     __api_method__ = 'board.getComments'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
     need_likes: bool | None = None
     start_comment_id: int | None = None
     offset: int | None = None
@@ -660,7 +660,7 @@ class BoardGetComments(VKMethod[Any]):
 
 class BoardGetTopics(VKMethod[Any]):
     __api_method__ = 'board.getTopics'
-    group_id: int = ...
+    group_id: int = Field(...)
     topic_ids: list[Any] | None = None
     order: int | None = None
     offset: int | None = None
@@ -671,34 +671,34 @@ class BoardGetTopics(VKMethod[Any]):
 
 class BoardOpenTopic(VKMethod[Any]):
     __api_method__ = 'board.openTopic'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
 
 class BoardRestoreComment(VKMethod[Any]):
     __api_method__ = 'board.restoreComment'
-    group_id: int = ...
-    topic_id: int = ...
-    comment_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
+    comment_id: int = Field(...)
 
 class BoardUnfixTopic(VKMethod[Any]):
     __api_method__ = 'board.unfixTopic'
-    group_id: int = ...
-    topic_id: int = ...
+    group_id: int = Field(...)
+    topic_id: int = Field(...)
 
 class BugtrackerAddCompanyGroupsMembers(VKMethod[Any]):
     __api_method__ = 'bugtracker.addCompanyGroupsMembers'
-    company_id: int = ...
-    user_ids: list[Any] = ...
-    company_group_ids: list[Any] = ...
+    company_id: int = Field(...)
+    user_ids: list[Any] = Field(...)
+    company_group_ids: list[Any] = Field(...)
 
 class BugtrackerAddCompanyMembers(VKMethod[Any]):
     __api_method__ = 'bugtracker.addCompanyMembers'
-    user_ids: list[Any] = ...
-    company_id: int = ...
+    user_ids: list[Any] = Field(...)
+    company_id: int = Field(...)
 
 class BugtrackerChangeBugreportStatus(VKMethod[Any]):
     __api_method__ = 'bugtracker.changeBugreportStatus'
-    bugreport_id: int = ...
+    bugreport_id: int = Field(...)
     status: int | None = None
     comment: str | None = None
     from_statuses: list[Any] | None = None
@@ -706,7 +706,7 @@ class BugtrackerChangeBugreportStatus(VKMethod[Any]):
 
 class BugtrackerCreateComment(VKMethod[Any]):
     __api_method__ = 'bugtracker.createComment'
-    bugreport_id: int = ...
+    bugreport_id: int = Field(...)
     text: str | None = None
     hidden: bool | None = None
     hidden_attachments: bool | None = None
@@ -714,14 +714,14 @@ class BugtrackerCreateComment(VKMethod[Any]):
 
 class BugtrackerGetBugreportById(VKMethod[Any]):
     __api_method__ = 'bugtracker.getBugreportById'
-    bugreport_id: int = ...
+    bugreport_id: int = Field(...)
     extended: bool | None = None
     fields: list[Any] | None = None
 
 class BugtrackerGetCompanyGroupMembers(VKMethod[Any]):
     __api_method__ = 'bugtracker.getCompanyGroupMembers'
-    company_id: int = ...
-    company_group_id: int = ...
+    company_id: int = Field(...)
+    company_group_id: int = Field(...)
     count: int | None = None
     offset: int | None = None
     filter_name: str | None = None
@@ -730,7 +730,7 @@ class BugtrackerGetCompanyGroupMembers(VKMethod[Any]):
 
 class BugtrackerGetCompanyMembers(VKMethod[Any]):
     __api_method__ = 'bugtracker.getCompanyMembers'
-    company_id: int = ...
+    company_id: int = Field(...)
     count: int | None = None
     offset: int | None = None
     filter_name: str | None = None
@@ -743,48 +743,48 @@ class BugtrackerGetCompanyMembers(VKMethod[Any]):
 
 class BugtrackerGetDownloadVersionUrl(VKMethod[Any]):
     __api_method__ = 'bugtracker.getDownloadVersionUrl'
-    product_id: int = ...
-    version_id: int = ...
+    product_id: int = Field(...)
+    version_id: int = Field(...)
     ttl: int | None = None
 
 class BugtrackerGetProductBuildUploadServer(VKMethod[Any]):
     __api_method__ = 'bugtracker.getProductBuildUploadServer'
-    product_id: int = ...
+    product_id: int = Field(...)
 
 class BugtrackerRemoveCompanyGroupMember(VKMethod[Any]):
     __api_method__ = 'bugtracker.removeCompanyGroupMember'
-    company_id: int = ...
-    user_id: int = ...
-    company_group_id: int = ...
+    company_id: int = Field(...)
+    user_id: int = Field(...)
+    company_group_id: int = Field(...)
 
 class BugtrackerRemoveCompanyMember(VKMethod[Any]):
     __api_method__ = 'bugtracker.removeCompanyMember'
-    user_id: int = ...
-    company_id: int = ...
+    user_id: int = Field(...)
+    company_id: int = Field(...)
 
 class BugtrackerSaveProductVersion(VKMethod[Any]):
     __api_method__ = 'bugtracker.saveProductVersion'
     product_id: int | None = None
     version_id: int | None = None
-    title: str = ...
+    title: str = Field(...)
     release_notes: str | None = None
     visible: bool | None = None
     set_rft: bool | None = None
 
 class BugtrackerSetCompanyMemberRole(VKMethod[Any]):
     __api_method__ = 'bugtracker.setCompanyMemberRole'
-    user_id: int = ...
-    company_id: int = ...
-    role: int = ...
+    user_id: int = Field(...)
+    company_id: int = Field(...)
+    role: int = Field(...)
 
 class BugtrackerSetProductIsOver(VKMethod[Any]):
     __api_method__ = 'bugtracker.setProductIsOver'
-    product_id: int = ...
+    product_id: int = Field(...)
     is_over: bool | None = None
 
 class CallsForceFinish(VKMethod[Any]):
     __api_method__ = 'calls.forceFinish'
-    call_id: str = ...
+    call_id: str = Field(...)
 
 class CallsStart(VKMethod[Any]):
     __api_method__ = 'calls.start'
@@ -792,7 +792,7 @@ class CallsStart(VKMethod[Any]):
 
 class DatabaseGetChairs(VKMethod[Any]):
     __api_method__ = 'database.getChairs'
-    faculty_id: int = ...
+    faculty_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
 
@@ -823,13 +823,13 @@ class DatabaseGetCountriesById(VKMethod[Any]):
 
 class DatabaseGetFaculties(VKMethod[Any]):
     __api_method__ = 'database.getFaculties'
-    university_id: int = ...
+    university_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
 
 class DatabaseGetMetroStations(VKMethod[Any]):
     __api_method__ = 'database.getMetroStations'
-    city_id: int = ...
+    city_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
     extended: bool | None = None
@@ -851,7 +851,7 @@ class DatabaseGetSchoolClasses(VKMethod[Any]):
 class DatabaseGetSchools(VKMethod[Any]):
     __api_method__ = 'database.getSchools'
     q: str | None = None
-    city_id: int = ...
+    city_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
 
@@ -864,20 +864,20 @@ class DatabaseGetUniversities(VKMethod[Any]):
 
 class DocsAdd(VKMethod[Any]):
     __api_method__ = 'docs.add'
-    owner_id: int = ...
-    doc_id: int = ...
+    owner_id: int = Field(...)
+    doc_id: int = Field(...)
     access_key: str | None = None
 
 class DocsDelete(VKMethod[Any]):
     __api_method__ = 'docs.delete'
-    owner_id: int = ...
-    doc_id: int = ...
+    owner_id: int = Field(...)
+    doc_id: int = Field(...)
 
 class DocsEdit(VKMethod[Any]):
     __api_method__ = 'docs.edit'
     owner_id: int | None = None
-    doc_id: int = ...
-    title: str = ...
+    doc_id: int = Field(...)
+    title: str = Field(...)
     tags: list[Any] | None = None
 
 class DocsGet(VKMethod[Any]):
@@ -890,7 +890,7 @@ class DocsGet(VKMethod[Any]):
 
 class DocsGetById(VKMethod[Any]):
     __api_method__ = 'docs.getById'
-    docs: list[Any] = ...
+    docs: list[Any] = Field(...)
     return_tags: bool | None = None
 
 class DocsGetMessagesUploadServer(VKMethod[Any]):
@@ -912,12 +912,12 @@ class DocsGetWallUploadServer(VKMethod[Any]):
 
 class DocsRestore(VKMethod[Any]):
     __api_method__ = 'docs.restore'
-    owner_id: int = ...
-    doc_id: int = ...
+    owner_id: int = Field(...)
+    doc_id: int = Field(...)
 
 class DocsSave(VKMethod[Any]):
     __api_method__ = 'docs.save'
-    file: str = ...
+    file: str = Field(...)
     title: str | None = None
     tags: str | None = None
     return_tags: bool | None = None
@@ -932,14 +932,14 @@ class DocsSearch(VKMethod[Any]):
 
 class DonutGetFriends(VKMethod[Any]):
     __api_method__ = 'donut.getFriends'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
     fields: list[Any] | None = None
 
 class DonutGetSubscription(VKMethod[Any]):
     __api_method__ = 'donut.getSubscription'
-    owner_id: int = ...
+    owner_id: int = Field(...)
 
 class DonutGetSubscriptions(VKMethod[Any]):
     __api_method__ = 'donut.getSubscriptions'
@@ -949,7 +949,7 @@ class DonutGetSubscriptions(VKMethod[Any]):
 
 class DonutIsDon(VKMethod[Any]):
     __api_method__ = 'donut.isDon'
-    owner_id: int = ...
+    owner_id: int = Field(...)
 
 class DownloadedGamesGetPaidStatus(VKMethod[Any]):
     __api_method__ = 'downloadedGames.getPaidStatus'
@@ -961,11 +961,11 @@ class Execute(VKMethod[Any]):
 
 class FaveAddArticle(VKMethod[Any]):
     __api_method__ = 'fave.addArticle'
-    url: str = ...
+    url: str = Field(...)
 
 class FaveAddLink(VKMethod[Any]):
     __api_method__ = 'fave.addLink'
-    link: str = ...
+    link: str = Field(...)
 
 class FaveAddPage(VKMethod[Any]):
     __api_method__ = 'fave.addPage'
@@ -974,14 +974,14 @@ class FaveAddPage(VKMethod[Any]):
 
 class FaveAddPost(VKMethod[Any]):
     __api_method__ = 'fave.addPost'
-    owner_id: int = ...
-    id: int = ...
+    owner_id: int = Field(...)
+    id: int = Field(...)
     access_key: str | None = None
 
 class FaveAddProduct(VKMethod[Any]):
     __api_method__ = 'fave.addProduct'
-    owner_id: int = ...
-    id: int = ...
+    owner_id: int = Field(...)
+    id: int = Field(...)
     access_key: str | None = None
 
 class FaveAddTag(VKMethod[Any]):
@@ -991,14 +991,14 @@ class FaveAddTag(VKMethod[Any]):
 
 class FaveAddVideo(VKMethod[Any]):
     __api_method__ = 'fave.addVideo'
-    owner_id: int = ...
-    id: int = ...
+    owner_id: int = Field(...)
+    id: int = Field(...)
     access_key: str | None = None
 
 class FaveEditTag(VKMethod[Any]):
     __api_method__ = 'fave.editTag'
-    id: int = ...
-    name: str = ...
+    id: int = Field(...)
+    name: str = Field(...)
 
 class FaveGet(VKMethod[Any]):
     __api_method__ = 'fave.get'
@@ -1028,8 +1028,8 @@ class FaveMarkSeen(VKMethod[Any]):
 
 class FaveRemoveArticle(VKMethod[Any]):
     __api_method__ = 'fave.removeArticle'
-    owner_id: int = ...
-    article_id: int = ...
+    owner_id: int = Field(...)
+    article_id: int = Field(...)
 
 class FaveRemoveLink(VKMethod[Any]):
     __api_method__ = 'fave.removeLink'
@@ -1043,26 +1043,26 @@ class FaveRemovePage(VKMethod[Any]):
 
 class FaveRemovePost(VKMethod[Any]):
     __api_method__ = 'fave.removePost'
-    owner_id: int = ...
-    id: int = ...
+    owner_id: int = Field(...)
+    id: int = Field(...)
 
 class FaveRemoveProduct(VKMethod[Any]):
     __api_method__ = 'fave.removeProduct'
-    owner_id: int = ...
-    id: int = ...
+    owner_id: int = Field(...)
+    id: int = Field(...)
 
 class FaveRemoveTag(VKMethod[Any]):
     __api_method__ = 'fave.removeTag'
-    id: int = ...
+    id: int = Field(...)
 
 class FaveRemoveVideo(VKMethod[Any]):
     __api_method__ = 'fave.removeVideo'
-    owner_id: int = ...
-    id: int = ...
+    owner_id: int = Field(...)
+    id: int = Field(...)
 
 class FaveReorderTags(VKMethod[Any]):
     __api_method__ = 'fave.reorderTags'
-    ids: list[Any] = ...
+    ids: list[Any] = Field(...)
 
 class FaveSetPageTags(VKMethod[Any]):
     __api_method__ = 'fave.setPageTags'
@@ -1092,12 +1092,12 @@ class FriendsAdd(VKMethod[Any]):
 
 class FriendsAddList(VKMethod[Any]):
     __api_method__ = 'friends.addList'
-    name: str = ...
+    name: str = Field(...)
     user_ids: list[Any] | None = None
 
 class FriendsAreFriends(VKMethod[Any]):
     __api_method__ = 'friends.areFriends'
-    user_ids: list[Any] = ...
+    user_ids: list[Any] = Field(...)
     need_sign: bool | None = None
     extended: bool | None = None
 
@@ -1111,17 +1111,17 @@ class FriendsDeleteAllRequests(VKMethod[Any]):
 
 class FriendsDeleteList(VKMethod[Any]):
     __api_method__ = 'friends.deleteList'
-    list_id: int = ...
+    list_id: int = Field(...)
 
 class FriendsEdit(VKMethod[Any]):
     __api_method__ = 'friends.edit'
-    user_id: int = ...
+    user_id: int = Field(...)
     list_ids: list[Any] | None = None
 
 class FriendsEditList(VKMethod[Any]):
     __api_method__ = 'friends.editList'
     name: str | None = None
-    list_id: int = ...
+    list_id: int = Field(...)
     user_ids: list[Any] | None = None
     add_user_ids: list[Any] | None = None
     delete_user_ids: list[Any] | None = None
@@ -1206,14 +1206,14 @@ class GiftsGet(VKMethod[Any]):
 
 class GroupsAddAddress(VKMethod[Any]):
     __api_method__ = 'groups.addAddress'
-    group_id: int = ...
-    title: str = ...
-    address: str = ...
+    group_id: int = Field(...)
+    title: str = Field(...)
+    address: str = Field(...)
     additional_address: str | None = None
-    city_id: int = ...
+    city_id: int = Field(...)
     metro_id: int | None = None
-    latitude: float = ...
-    longitude: float = ...
+    latitude: float = Field(...)
+    longitude: float = Field(...)
     phone: str | None = None
     work_info_status: str | None = None
     timetable: str | None = None
@@ -1221,25 +1221,25 @@ class GroupsAddAddress(VKMethod[Any]):
 
 class GroupsAddCallbackServer(VKMethod[Any]):
     __api_method__ = 'groups.addCallbackServer'
-    group_id: int = ...
-    url: str = ...
-    title: str = ...
+    group_id: int = Field(...)
+    url: str = Field(...)
+    title: str = Field(...)
     secret_key: str | None = None
 
 class GroupsAddLink(VKMethod[Any]):
     __api_method__ = 'groups.addLink'
-    group_id: int = ...
-    link: str = ...
+    group_id: int = Field(...)
+    link: str = Field(...)
     text: str | None = None
 
 class GroupsApproveRequest(VKMethod[Any]):
     __api_method__ = 'groups.approveRequest'
-    group_id: int = ...
-    user_id: int = ...
+    group_id: int = Field(...)
+    user_id: int = Field(...)
 
 class GroupsBan(VKMethod[Any]):
     __api_method__ = 'groups.ban'
-    group_id: int = ...
+    group_id: int = Field(...)
     owner_id: int | None = None
     end_date: int | None = None
     reason: int | None = None
@@ -1248,7 +1248,7 @@ class GroupsBan(VKMethod[Any]):
 
 class GroupsCreate(VKMethod[Any]):
     __api_method__ = 'groups.create'
-    title: str = ...
+    title: str = Field(...)
     description: str | None = None
     type: str | None = None
     public_category: int | None = None
@@ -1257,26 +1257,26 @@ class GroupsCreate(VKMethod[Any]):
 
 class GroupsDeleteAddress(VKMethod[Any]):
     __api_method__ = 'groups.deleteAddress'
-    group_id: int = ...
-    address_id: int = ...
+    group_id: int = Field(...)
+    address_id: int = Field(...)
 
 class GroupsDeleteCallbackServer(VKMethod[Any]):
     __api_method__ = 'groups.deleteCallbackServer'
-    group_id: int = ...
-    server_id: int = ...
+    group_id: int = Field(...)
+    server_id: int = Field(...)
 
 class GroupsDeleteLink(VKMethod[Any]):
     __api_method__ = 'groups.deleteLink'
-    group_id: int = ...
-    link_id: int = ...
+    group_id: int = Field(...)
+    link_id: int = Field(...)
 
 class GroupsDisableOnline(VKMethod[Any]):
     __api_method__ = 'groups.disableOnline'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsEdit(VKMethod[Any]):
     __api_method__ = 'groups.edit'
-    group_id: int = ...
+    group_id: int = Field(...)
     title: str | None = None
     description: str | None = None
     screen_name: str | None = None
@@ -1327,8 +1327,8 @@ class GroupsEdit(VKMethod[Any]):
 
 class GroupsEditAddress(VKMethod[Any]):
     __api_method__ = 'groups.editAddress'
-    group_id: int = ...
-    address_id: int = ...
+    group_id: int = Field(...)
+    address_id: int = Field(...)
     title: str | None = None
     address: str | None = None
     additional_address: str | None = None
@@ -1343,22 +1343,22 @@ class GroupsEditAddress(VKMethod[Any]):
 
 class GroupsEditCallbackServer(VKMethod[Any]):
     __api_method__ = 'groups.editCallbackServer'
-    group_id: int = ...
-    server_id: int = ...
-    url: str = ...
-    title: str = ...
+    group_id: int = Field(...)
+    server_id: int = Field(...)
+    url: str = Field(...)
+    title: str = Field(...)
     secret_key: str | None = None
 
 class GroupsEditLink(VKMethod[Any]):
     __api_method__ = 'groups.editLink'
-    group_id: int = ...
-    link_id: int = ...
+    group_id: int = Field(...)
+    link_id: int = Field(...)
     text: str | None = None
 
 class GroupsEditManager(VKMethod[Any]):
     __api_method__ = 'groups.editManager'
-    group_id: int = ...
-    user_id: int = ...
+    group_id: int = Field(...)
+    user_id: int = Field(...)
     role: str | None = None
     is_call_operator: bool | None = None
     is_contact: bool | None = None
@@ -1368,7 +1368,7 @@ class GroupsEditManager(VKMethod[Any]):
 
 class GroupsEnableOnline(VKMethod[Any]):
     __api_method__ = 'groups.enableOnline'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsGet(VKMethod[Any]):
     __api_method__ = 'groups.get'
@@ -1381,7 +1381,7 @@ class GroupsGet(VKMethod[Any]):
 
 class GroupsGetAddresses(VKMethod[Any]):
     __api_method__ = 'groups.getAddresses'
-    group_id: int = ...
+    group_id: int = Field(...)
     address_ids: list[Any] | None = None
     latitude: float | None = None
     longitude: float | None = None
@@ -1391,7 +1391,7 @@ class GroupsGetAddresses(VKMethod[Any]):
 
 class GroupsGetBanned(VKMethod[Any]):
     __api_method__ = 'groups.getBanned'
-    group_id: int = ...
+    group_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
     fields: list[Any] | None = None
@@ -1405,16 +1405,16 @@ class GroupsGetById(VKMethod[Any]):
 
 class GroupsGetCallbackConfirmationCode(VKMethod[Any]):
     __api_method__ = 'groups.getCallbackConfirmationCode'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsGetCallbackServers(VKMethod[Any]):
     __api_method__ = 'groups.getCallbackServers'
-    group_id: int = ...
+    group_id: int = Field(...)
     server_ids: list[Any] | None = None
 
 class GroupsGetCallbackSettings(VKMethod[Any]):
     __api_method__ = 'groups.getCallbackSettings'
-    group_id: int = ...
+    group_id: int = Field(...)
     server_id: int | None = None
 
 class GroupsGetCatalogInfo(VKMethod[Any]):
@@ -1424,7 +1424,7 @@ class GroupsGetCatalogInfo(VKMethod[Any]):
 
 class GroupsGetInvitedUsers(VKMethod[Any]):
     __api_method__ = 'groups.getInvitedUsers'
-    group_id: int = ...
+    group_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
     fields: list[Any] | None = None
@@ -1438,11 +1438,11 @@ class GroupsGetInvites(VKMethod[Any]):
 
 class GroupsGetLongPollServer(VKMethod[Any]):
     __api_method__ = 'groups.getLongPollServer'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsGetLongPollSettings(VKMethod[Any]):
     __api_method__ = 'groups.getLongPollSettings'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsGetMembers(VKMethod[Any]):
     __api_method__ = 'groups.getMembers'
@@ -1455,22 +1455,22 @@ class GroupsGetMembers(VKMethod[Any]):
 
 class GroupsGetOnlineStatus(VKMethod[Any]):
     __api_method__ = 'groups.getOnlineStatus'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsGetRequests(VKMethod[Any]):
     __api_method__ = 'groups.getRequests'
-    group_id: int = ...
+    group_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
     fields: list[Any] | None = None
 
 class GroupsGetSettings(VKMethod[Any]):
     __api_method__ = 'groups.getSettings'
-    group_id: int | str = ...
+    group_id: int | str = Field(...)
 
 class GroupsGetTagList(VKMethod[Any]):
     __api_method__ = 'groups.getTagList'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsGetTokenPermissions(VKMethod[Any]):
     __api_method__ = 'groups.getTokenPermissions'
@@ -1478,40 +1478,40 @@ class GroupsGetTokenPermissions(VKMethod[Any]):
 
 class GroupsInvite(VKMethod[Any]):
     __api_method__ = 'groups.invite'
-    group_id: int = ...
+    group_id: int = Field(...)
     user_id: int | None = None
     user_ids_list: list[Any] | None = None
 
 class GroupsIsMember(VKMethod[Any]):
     __api_method__ = 'groups.isMember'
-    group_id: int | str = ...
+    group_id: int | str = Field(...)
     user_id: int | None = None
     user_ids: list[Any] | None = None
     extended: bool | None = None
 
 class GroupsJoin(VKMethod[Any]):
     __api_method__ = 'groups.join'
-    group_id: int = ...
+    group_id: int = Field(...)
     not_sure: str | None = None
 
 class GroupsLeave(VKMethod[Any]):
     __api_method__ = 'groups.leave'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class GroupsRemoveUser(VKMethod[Any]):
     __api_method__ = 'groups.removeUser'
-    group_id: int = ...
-    user_id: int = ...
+    group_id: int = Field(...)
+    user_id: int = Field(...)
 
 class GroupsReorderLink(VKMethod[Any]):
     __api_method__ = 'groups.reorderLink'
-    group_id: int = ...
-    link_id: int = ...
+    group_id: int = Field(...)
+    link_id: int = Field(...)
     after: int | None = None
 
 class GroupsSearch(VKMethod[Any]):
     __api_method__ = 'groups.search'
-    q: str = ...
+    q: str = Field(...)
     type: str | None = None
     country_id: int | None = None
     city_id: int | None = None
@@ -1523,7 +1523,7 @@ class GroupsSearch(VKMethod[Any]):
 
 class GroupsSetCallbackSettings(VKMethod[Any]):
     __api_method__ = 'groups.setCallbackSettings'
-    group_id: int = ...
+    group_id: int = Field(...)
     server_id: int | None = None
     api_version: str | None = None
     message_new: bool | None = None
@@ -1585,7 +1585,7 @@ class GroupsSetCallbackSettings(VKMethod[Any]):
 
 class GroupsSetLongPollSettings(VKMethod[Any]):
     __api_method__ = 'groups.setLongPollSettings'
-    group_id: int = ...
+    group_id: int = Field(...)
     enabled: bool | None = None
     api_version: str | None = None
     message_new: bool | None = None
@@ -1642,7 +1642,7 @@ class GroupsSetLongPollSettings(VKMethod[Any]):
 
 class GroupsSetSettings(VKMethod[Any]):
     __api_method__ = 'groups.setSettings'
-    group_id: int = ...
+    group_id: int = Field(...)
     messages: bool | None = None
     bots_capabilities: bool | None = None
     bots_start_button: bool | None = None
@@ -1651,53 +1651,53 @@ class GroupsSetSettings(VKMethod[Any]):
 
 class GroupsSetUserNote(VKMethod[Any]):
     __api_method__ = 'groups.setUserNote'
-    group_id: int = ...
-    user_id: int = ...
+    group_id: int = Field(...)
+    user_id: int = Field(...)
     note: str | None = None
 
 class GroupsTagAdd(VKMethod[Any]):
     __api_method__ = 'groups.tagAdd'
-    group_id: int = ...
-    tag_name: str = ...
+    group_id: int = Field(...)
+    tag_name: str = Field(...)
     tag_color: str | None = None
 
 class GroupsTagBind(VKMethod[Any]):
     __api_method__ = 'groups.tagBind'
-    group_id: int = ...
-    tag_id: int = ...
-    user_id: int = ...
-    act: str = ...
+    group_id: int = Field(...)
+    tag_id: int = Field(...)
+    user_id: int = Field(...)
+    act: str = Field(...)
 
 class GroupsTagDelete(VKMethod[Any]):
     __api_method__ = 'groups.tagDelete'
-    group_id: int = ...
-    tag_id: int = ...
+    group_id: int = Field(...)
+    tag_id: int = Field(...)
 
 class GroupsTagUpdate(VKMethod[Any]):
     __api_method__ = 'groups.tagUpdate'
-    group_id: int = ...
-    tag_id: int = ...
-    tag_name: str = ...
+    group_id: int = Field(...)
+    tag_id: int = Field(...)
+    tag_name: str = Field(...)
 
 class GroupsToggleMarket(VKMethod[Any]):
     __api_method__ = 'groups.toggleMarket'
-    group_id: int = ...
-    state: str = ...
+    group_id: int = Field(...)
+    state: str = Field(...)
     ref: str | None = None
 
 class GroupsUnban(VKMethod[Any]):
     __api_method__ = 'groups.unban'
-    group_id: int = ...
+    group_id: int = Field(...)
     owner_id: int | None = None
 
 class LeadFormsCreate(VKMethod[Any]):
     __api_method__ = 'leadForms.create'
-    group_id: int = ...
-    name: str = ...
-    title: str = ...
-    description: str = ...
-    questions: str = ...
-    policy_link_url: str = ...
+    group_id: int = Field(...)
+    name: str = Field(...)
+    title: str = Field(...)
+    description: str = Field(...)
+    questions: str = Field(...)
+    policy_link_url: str = Field(...)
     photo: str | None = None
     confirmation: str | None = None
     site_link_url: str | None = None
@@ -1709,18 +1709,18 @@ class LeadFormsCreate(VKMethod[Any]):
 
 class LeadFormsDelete(VKMethod[Any]):
     __api_method__ = 'leadForms.delete'
-    group_id: int = ...
-    form_id: int = ...
+    group_id: int = Field(...)
+    form_id: int = Field(...)
 
 class LeadFormsGet(VKMethod[Any]):
     __api_method__ = 'leadForms.get'
-    group_id: int = ...
-    form_id: int = ...
+    group_id: int = Field(...)
+    form_id: int = Field(...)
 
 class LeadFormsGetLeads(VKMethod[Any]):
     __api_method__ = 'leadForms.getLeads'
-    group_id: int = ...
-    form_id: int = ...
+    group_id: int = Field(...)
+    form_id: int = Field(...)
     limit: int | None = None
     next_page_token: str | None = None
 
@@ -1730,17 +1730,17 @@ class LeadFormsGetUploadURL(VKMethod[Any]):
 
 class LeadFormsList(VKMethod[Any]):
     __api_method__ = 'leadForms.list'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class LeadFormsUpdate(VKMethod[Any]):
     __api_method__ = 'leadForms.update'
-    group_id: int = ...
-    form_id: int = ...
-    name: str = ...
-    title: str = ...
-    description: str = ...
-    questions: str = ...
-    policy_link_url: str = ...
+    group_id: int = Field(...)
+    form_id: int = Field(...)
+    name: str = Field(...)
+    title: str = Field(...)
+    description: str = Field(...)
+    questions: str = Field(...)
+    policy_link_url: str = Field(...)
     photo: str | None = None
     confirmation: str | None = None
     site_link_url: str | None = None
@@ -1752,23 +1752,23 @@ class LeadFormsUpdate(VKMethod[Any]):
 
 class LikesAdd(VKMethod[Any]):
     __api_method__ = 'likes.add'
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
-    item_id: int = ...
+    item_id: int = Field(...)
     access_key: str | None = None
     from_group: bool | None = None
 
 class LikesDelete(VKMethod[Any]):
     __api_method__ = 'likes.delete'
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
-    item_id: int = ...
+    item_id: int = Field(...)
     access_key: str | None = None
     from_group: bool | None = None
 
 class LikesGetList(VKMethod[Any]):
     __api_method__ = 'likes.getList'
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
     item_id: int | None = None
     page_url: str | None = None
@@ -1783,16 +1783,16 @@ class LikesGetList(VKMethod[Any]):
 class LikesIsLiked(VKMethod[Any]):
     __api_method__ = 'likes.isLiked'
     user_id: int | None = None
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
-    item_id: int = ...
+    item_id: int = Field(...)
 
 class MarketAdd(VKMethod[Any]):
     __api_method__ = 'market.add'
-    owner_id: int = ...
-    name: str = ...
-    description: str = ...
-    category_id: int = ...
+    owner_id: int = Field(...)
+    name: str = Field(...)
+    description: str = Field(...)
+    category_id: int = Field(...)
     price: float | None = None
     old_price: float | None = None
     deleted: bool | None = None
@@ -1811,33 +1811,33 @@ class MarketAdd(VKMethod[Any]):
 
 class MarketAddAlbum(VKMethod[Any]):
     __api_method__ = 'market.addAlbum'
-    owner_id: int = ...
-    title: str = ...
+    owner_id: int = Field(...)
+    title: str = Field(...)
     photo_id: int | None = None
     main_album: bool | None = None
     is_hidden: bool | None = None
 
 class MarketAddProperty(VKMethod[Any]):
     __api_method__ = 'market.addProperty'
-    group_id: int = ...
-    title: str = ...
+    group_id: int = Field(...)
+    title: str = Field(...)
 
 class MarketAddPropertyVariant(VKMethod[Any]):
     __api_method__ = 'market.addPropertyVariant'
-    group_id: int = ...
-    property_id: int = ...
-    title: str = ...
+    group_id: int = Field(...)
+    property_id: int = Field(...)
+    title: str = Field(...)
 
 class MarketAddToAlbum(VKMethod[Any]):
     __api_method__ = 'market.addToAlbum'
-    owner_id: int = ...
-    item_ids: list[Any] = ...
-    album_ids: list[Any] = ...
+    owner_id: int = Field(...)
+    item_ids: list[Any] = Field(...)
+    album_ids: list[Any] = Field(...)
 
 class MarketCreateComment(VKMethod[Any]):
     __api_method__ = 'market.createComment'
-    owner_id: int = ...
-    item_id: int = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
     from_group: bool | None = None
@@ -1847,33 +1847,33 @@ class MarketCreateComment(VKMethod[Any]):
 
 class MarketDelete(VKMethod[Any]):
     __api_method__ = 'market.delete'
-    owner_id: int = ...
-    item_id: int = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
 
 class MarketDeleteAlbum(VKMethod[Any]):
     __api_method__ = 'market.deleteAlbum'
-    owner_id: int = ...
-    album_id: int = ...
+    owner_id: int = Field(...)
+    album_id: int = Field(...)
 
 class MarketDeleteComment(VKMethod[Any]):
     __api_method__ = 'market.deleteComment'
-    owner_id: int = ...
-    comment_id: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
 
 class MarketDeleteProperty(VKMethod[Any]):
     __api_method__ = 'market.deleteProperty'
-    group_id: int = ...
-    property_id: int = ...
+    group_id: int = Field(...)
+    property_id: int = Field(...)
 
 class MarketDeletePropertyVariant(VKMethod[Any]):
     __api_method__ = 'market.deletePropertyVariant'
-    group_id: int = ...
-    variant_id: int = ...
+    group_id: int = Field(...)
+    variant_id: int = Field(...)
 
 class MarketEdit(VKMethod[Any]):
     __api_method__ = 'market.edit'
-    owner_id: int = ...
-    item_id: int = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
     name: str | None = None
     description: str | None = None
     category_id: int | None = None
@@ -1895,24 +1895,24 @@ class MarketEdit(VKMethod[Any]):
 
 class MarketEditAlbum(VKMethod[Any]):
     __api_method__ = 'market.editAlbum'
-    owner_id: int = ...
-    album_id: int = ...
-    title: str = ...
+    owner_id: int = Field(...)
+    album_id: int = Field(...)
+    title: str = Field(...)
     photo_id: int | None = None
     main_album: bool | None = None
     is_hidden: bool | None = None
 
 class MarketEditComment(VKMethod[Any]):
     __api_method__ = 'market.editComment'
-    owner_id: int = ...
-    comment_id: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
 
 class MarketEditOrder(VKMethod[Any]):
     __api_method__ = 'market.editOrder'
-    user_id: int = ...
-    order_id: int = ...
+    user_id: int = Field(...)
+    order_id: int = Field(...)
     merchant_comment: str | None = None
     status: int | None = None
     track_number: str | None = None
@@ -1927,15 +1927,15 @@ class MarketEditOrder(VKMethod[Any]):
 
 class MarketEditProperty(VKMethod[Any]):
     __api_method__ = 'market.editProperty'
-    group_id: int = ...
-    property_id: int = ...
-    title: str = ...
+    group_id: int = Field(...)
+    property_id: int = Field(...)
+    title: str = Field(...)
 
 class MarketEditPropertyVariant(VKMethod[Any]):
     __api_method__ = 'market.editPropertyVariant'
-    group_id: int = ...
-    variant_id: int = ...
-    title: str = ...
+    group_id: int = Field(...)
+    variant_id: int = Field(...)
+    title: str = Field(...)
 
 class MarketFilterCategories(VKMethod[Any]):
     __api_method__ = 'market.filterCategories'
@@ -1945,7 +1945,7 @@ class MarketFilterCategories(VKMethod[Any]):
 
 class MarketGet(VKMethod[Any]):
     __api_method__ = 'market.get'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     album_id: int | None = None
     count: int | None = None
     offset: int | None = None
@@ -1958,18 +1958,18 @@ class MarketGet(VKMethod[Any]):
 
 class MarketGetAlbumById(VKMethod[Any]):
     __api_method__ = 'market.getAlbumById'
-    owner_id: int = ...
-    album_ids: list[Any] = ...
+    owner_id: int = Field(...)
+    album_ids: list[Any] = Field(...)
 
 class MarketGetAlbums(VKMethod[Any]):
     __api_method__ = 'market.getAlbums'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
 
 class MarketGetById(VKMethod[Any]):
     __api_method__ = 'market.getById'
-    item_ids: list[Any] = ...
+    item_ids: list[Any] = Field(...)
     extended: bool | None = None
 
 class MarketGetCategories(VKMethod[Any]):
@@ -1979,8 +1979,8 @@ class MarketGetCategories(VKMethod[Any]):
 
 class MarketGetComments(VKMethod[Any]):
     __api_method__ = 'market.getComments'
-    owner_id: int = ...
-    item_id: int = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
     need_likes: bool | None = None
     start_comment_id: int | None = None
     offset: int | None = None
@@ -2005,13 +2005,13 @@ class MarketGetGroupOrders(VKMethod[Any]):
 class MarketGetOrderById(VKMethod[Any]):
     __api_method__ = 'market.getOrderById'
     user_id: int | None = None
-    order_id: int = ...
+    order_id: int = Field(...)
     extended: bool | None = None
 
 class MarketGetOrderItems(VKMethod[Any]):
     __api_method__ = 'market.getOrderItems'
     user_id: int | None = None
-    order_id: int = ...
+    order_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
 
@@ -2025,73 +2025,73 @@ class MarketGetOrders(VKMethod[Any]):
 
 class MarketGetProductPhotoUploadServer(VKMethod[Any]):
     __api_method__ = 'market.getProductPhotoUploadServer'
-    group_id: int = ...
+    group_id: int = Field(...)
     bulk: bool | None = None
 
 class MarketGetProperties(VKMethod[Any]):
     __api_method__ = 'market.getProperties'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class MarketGroupItems(VKMethod[Any]):
     __api_method__ = 'market.groupItems'
-    group_id: int = ...
-    item_ids: list[Any] = ...
+    group_id: int = Field(...)
+    item_ids: list[Any] = Field(...)
     item_group_id: int | None = None
 
 class MarketRemoveFromAlbum(VKMethod[Any]):
     __api_method__ = 'market.removeFromAlbum'
-    owner_id: int = ...
-    item_id: int = ...
-    album_ids: list[Any] = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
+    album_ids: list[Any] = Field(...)
 
 class MarketReorderAlbums(VKMethod[Any]):
     __api_method__ = 'market.reorderAlbums'
-    owner_id: int = ...
-    album_id: int = ...
+    owner_id: int = Field(...)
+    album_id: int = Field(...)
     before: int | None = None
     after: int | None = None
 
 class MarketReorderItems(VKMethod[Any]):
     __api_method__ = 'market.reorderItems'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     album_id: int | None = None
-    item_id: int = ...
+    item_id: int = Field(...)
     before: int | None = None
     after: int | None = None
 
 class MarketReport(VKMethod[Any]):
     __api_method__ = 'market.report'
-    owner_id: int = ...
-    item_id: int = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
     reason: int | None = None
 
 class MarketReportComment(VKMethod[Any]):
     __api_method__ = 'market.reportComment'
-    owner_id: int = ...
-    comment_id: int = ...
-    reason: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
+    reason: int = Field(...)
 
 class MarketRestore(VKMethod[Any]):
     __api_method__ = 'market.restore'
-    owner_id: int = ...
-    item_id: int = ...
+    owner_id: int = Field(...)
+    item_id: int = Field(...)
 
 class MarketRestoreComment(VKMethod[Any]):
     __api_method__ = 'market.restoreComment'
-    owner_id: int = ...
-    comment_id: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
 
 class MarketSaveProductPhoto(VKMethod[Any]):
     __api_method__ = 'market.saveProductPhoto'
-    upload_response: str = ...
+    upload_response: str = Field(...)
 
 class MarketSaveProductPhotoBulk(VKMethod[Any]):
     __api_method__ = 'market.saveProductPhotoBulk'
-    upload_response: str = ...
+    upload_response: str = Field(...)
 
 class MarketSearch(VKMethod[Any]):
     __api_method__ = 'market.search'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     album_id: int | None = None
     q: str | None = None
     price_from: int | None = None
@@ -2106,7 +2106,7 @@ class MarketSearch(VKMethod[Any]):
 
 class MarketSearchItems(VKMethod[Any]):
     __api_method__ = 'market.searchItems'
-    q: str = ...
+    q: str = Field(...)
     offset: int | None = None
     count: int | None = None
     category_id: int | None = None
@@ -2119,7 +2119,7 @@ class MarketSearchItems(VKMethod[Any]):
 
 class MarketSearchItemsBasic(VKMethod[Any]):
     __api_method__ = 'market.searchItemsBasic'
-    q: str = ...
+    q: str = Field(...)
     offset: int | None = None
     count: int | None = None
     category_id: int | None = None
@@ -2133,12 +2133,12 @@ class MarketSearchItemsBasic(VKMethod[Any]):
 
 class MarketUngroupItems(VKMethod[Any]):
     __api_method__ = 'market.ungroupItems'
-    group_id: int = ...
-    item_group_id: int = ...
+    group_id: int = Field(...)
+    item_group_id: int = Field(...)
 
 class MessagesAddChatUser(VKMethod[Any]):
     __api_method__ = 'messages.addChatUser'
-    chat_id: int = ...
+    chat_id: int = Field(...)
     user_id: int | None = None
     visible_messages_count: int | None = None
 
@@ -2149,7 +2149,7 @@ class MessagesAddChatUsers(VKMethod[Any]):
 
 class MessagesAllowMessagesFromGroup(VKMethod[Any]):
     __api_method__ = 'messages.allowMessagesFromGroup'
-    group_id: int = ...
+    group_id: int = Field(...)
     key: str | None = None
 
 class MessagesCreateChat(VKMethod[Any]):
@@ -2170,7 +2170,7 @@ class MessagesDelete(VKMethod[Any]):
 
 class MessagesDeleteChatPhoto(VKMethod[Any]):
     __api_method__ = 'messages.deleteChatPhoto'
-    chat_id: int = ...
+    chat_id: int = Field(...)
     group_id: int | None = None
 
 class MessagesDeleteConversation(VKMethod[Any]):
@@ -2181,16 +2181,16 @@ class MessagesDeleteConversation(VKMethod[Any]):
 
 class MessagesDeleteReaction(VKMethod[Any]):
     __api_method__ = 'messages.deleteReaction'
-    peer_id: int = ...
-    cmid: int = ...
+    peer_id: int = Field(...)
+    cmid: int = Field(...)
 
 class MessagesDenyMessagesFromGroup(VKMethod[Any]):
     __api_method__ = 'messages.denyMessagesFromGroup'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class MessagesEdit(VKMethod[Any]):
     __api_method__ = 'messages.edit'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     message: str | None = None
     lat: float | None = None
     long: float | None = None
@@ -2207,13 +2207,13 @@ class MessagesEdit(VKMethod[Any]):
 
 class MessagesEditChat(VKMethod[Any]):
     __api_method__ = 'messages.editChat'
-    chat_id: int = ...
+    chat_id: int = Field(...)
     title: str | None = None
 
 class MessagesGetByConversationMessageId(VKMethod[Any]):
     __api_method__ = 'messages.getByConversationMessageId'
-    peer_id: int = ...
-    conversation_message_ids: list[Any] = ...
+    peer_id: int = Field(...)
+    conversation_message_ids: list[Any] = Field(...)
     extended: bool | None = None
     fields: list[Any] | None = None
     group_id: int | None = None
@@ -2243,7 +2243,7 @@ class MessagesGetChatPreview(VKMethod[Any]):
 
 class MessagesGetConversationMembers(VKMethod[Any]):
     __api_method__ = 'messages.getConversationMembers'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
     extended: bool | None = None
@@ -2263,7 +2263,7 @@ class MessagesGetConversations(VKMethod[Any]):
 
 class MessagesGetConversationsById(VKMethod[Any]):
     __api_method__ = 'messages.getConversationsById'
-    peer_ids: list[Any] = ...
+    peer_ids: list[Any] = Field(...)
     extended: bool | None = None
     fields: list[Any] | None = None
     group_id: int | None = None
@@ -2310,7 +2310,7 @@ class MessagesGetImportantMessages(VKMethod[Any]):
 
 class MessagesGetIntentUsers(VKMethod[Any]):
     __api_method__ = 'messages.getIntentUsers'
-    intent: str = ...
+    intent: str = Field(...)
     subscribe_id: int | None = None
     offset: int | None = None
     count: int | None = None
@@ -2320,13 +2320,13 @@ class MessagesGetIntentUsers(VKMethod[Any]):
 
 class MessagesGetInviteLink(VKMethod[Any]):
     __api_method__ = 'messages.getInviteLink'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     reset: bool | None = None
     group_id: int | None = None
 
 class MessagesGetLastActivity(VKMethod[Any]):
     __api_method__ = 'messages.getLastActivity'
-    user_id: int = ...
+    user_id: int = Field(...)
 
 class MessagesGetLongPollHistory(VKMethod[Any]):
     __api_method__ = 'messages.getLongPollHistory'
@@ -2352,13 +2352,13 @@ class MessagesGetLongPollServer(VKMethod[Any]):
 
 class MessagesGetMessagesReactions(VKMethod[Any]):
     __api_method__ = 'messages.getMessagesReactions'
-    peer_id: int = ...
-    cmids: list[Any] = ...
+    peer_id: int = Field(...)
+    cmids: list[Any] = Field(...)
 
 class MessagesGetReactedPeers(VKMethod[Any]):
     __api_method__ = 'messages.getReactedPeers'
-    peer_id: int = ...
-    cmid: int = ...
+    peer_id: int = Field(...)
+    cmid: int = Field(...)
     reaction_id: int | None = None
 
 class MessagesGetReactionsAssets(VKMethod[Any]):
@@ -2367,16 +2367,16 @@ class MessagesGetReactionsAssets(VKMethod[Any]):
 
 class MessagesIsMessagesFromGroupAllowed(VKMethod[Any]):
     __api_method__ = 'messages.isMessagesFromGroupAllowed'
-    group_id: int = ...
-    user_id: int = ...
+    group_id: int = Field(...)
+    user_id: int = Field(...)
 
 class MessagesJoinChatByInviteLink(VKMethod[Any]):
     __api_method__ = 'messages.joinChatByInviteLink'
-    link: str = ...
+    link: str = Field(...)
 
 class MessagesMarkAsAnsweredConversation(VKMethod[Any]):
     __api_method__ = 'messages.markAsAnsweredConversation'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     answered: bool | None = None
     group_id: int | None = None
 
@@ -2387,7 +2387,7 @@ class MessagesMarkAsImportant(VKMethod[Any]):
 
 class MessagesMarkAsImportantConversation(VKMethod[Any]):
     __api_method__ = 'messages.markAsImportantConversation'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     important: bool | None = None
     group_id: int | None = None
 
@@ -2402,23 +2402,23 @@ class MessagesMarkAsRead(VKMethod[Any]):
 
 class MessagesMarkReactionsAsRead(VKMethod[Any]):
     __api_method__ = 'messages.markReactionsAsRead'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     cmids: list[Any] | None = None
 
 class MessagesMuteChatMentions(VKMethod[Any]):
     __api_method__ = 'messages.muteChatMentions'
-    peer_id: int = ...
-    mention_status: str = ...
+    peer_id: int = Field(...)
+    mention_status: str = Field(...)
 
 class MessagesPin(VKMethod[Any]):
     __api_method__ = 'messages.pin'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     message_id: int | None = None
     cmid: int | None = None
 
 class MessagesRemoveChatUser(VKMethod[Any]):
     __api_method__ = 'messages.removeChatUser'
-    chat_id: int = ...
+    chat_id: int = Field(...)
     user_id: int | None = None
     member_id: int | None = None
 
@@ -2477,16 +2477,16 @@ class MessagesSend(VKMethod[Any]):
 
 class MessagesSendMessageEventAnswer(VKMethod[Any]):
     __api_method__ = 'messages.sendMessageEventAnswer'
-    event_id: str = ...
-    user_id: int = ...
-    peer_id: int = ...
+    event_id: str = Field(...)
+    user_id: int = Field(...)
+    peer_id: int = Field(...)
     event_data: str | None = None
 
 class MessagesSendReaction(VKMethod[Any]):
     __api_method__ = 'messages.sendReaction'
-    peer_id: int = ...
-    cmid: int = ...
-    reaction_id: int = ...
+    peer_id: int = Field(...)
+    cmid: int = Field(...)
+    reaction_id: int = Field(...)
 
 class MessagesSetActivity(VKMethod[Any]):
     __api_method__ = 'messages.setActivity'
@@ -2497,11 +2497,11 @@ class MessagesSetActivity(VKMethod[Any]):
 
 class MessagesSetChatPhoto(VKMethod[Any]):
     __api_method__ = 'messages.setChatPhoto'
-    file: str = ...
+    file: str = Field(...)
 
 class MessagesUnpin(VKMethod[Any]):
     __api_method__ = 'messages.unpin'
-    peer_id: int = ...
+    peer_id: int = Field(...)
     group_id: int | None = None
 
 class NewsfeedAddBan(VKMethod[Any]):
@@ -2516,7 +2516,7 @@ class NewsfeedDeleteBan(VKMethod[Any]):
 
 class NewsfeedDeleteList(VKMethod[Any]):
     __api_method__ = 'newsfeed.deleteList'
-    list_id: int = ...
+    list_id: int = Field(...)
 
 class NewsfeedGet(VKMethod[Any]):
     __api_method__ = 'newsfeed.get'
@@ -2579,15 +2579,15 @@ class NewsfeedGetSuggestedSources(VKMethod[Any]):
 
 class NewsfeedIgnoreItem(VKMethod[Any]):
     __api_method__ = 'newsfeed.ignoreItem'
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
     item_id: int | None = None
 
 class NewsfeedSaveList(VKMethod[Any]):
     __api_method__ = 'newsfeed.saveList'
     list_id: int | None = None
-    title: str = ...
-    source_ids: list[Any] = ...
+    title: str = Field(...)
+    source_ids: list[Any] = Field(...)
     no_reposts: bool | None = None
 
 class NewsfeedSearch(VKMethod[Any]):
@@ -2604,54 +2604,54 @@ class NewsfeedSearch(VKMethod[Any]):
 
 class NewsfeedUnignoreItem(VKMethod[Any]):
     __api_method__ = 'newsfeed.unignoreItem'
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
     item_id: int | None = None
     track_code: str | None = None
 
 class NewsfeedUnsubscribe(VKMethod[Any]):
     __api_method__ = 'newsfeed.unsubscribe'
-    type: str = ...
+    type: str = Field(...)
     owner_id: int | None = None
-    item_id: int = ...
+    item_id: int = Field(...)
 
 class NotesAdd(VKMethod[Any]):
     __api_method__ = 'notes.add'
-    title: str = ...
-    text: str = ...
+    title: str = Field(...)
+    text: str = Field(...)
     privacy_view: list[Any] | None = None
     privacy_comment: list[Any] | None = None
 
 class NotesCreateComment(VKMethod[Any]):
     __api_method__ = 'notes.createComment'
-    note_id: int = ...
+    note_id: int = Field(...)
     owner_id: int | None = None
     reply_to: int | None = None
-    message: str = ...
+    message: str = Field(...)
     guid: str | None = None
 
 class NotesDelete(VKMethod[Any]):
     __api_method__ = 'notes.delete'
-    note_id: int = ...
+    note_id: int = Field(...)
 
 class NotesDeleteComment(VKMethod[Any]):
     __api_method__ = 'notes.deleteComment'
-    comment_id: int = ...
+    comment_id: int = Field(...)
     owner_id: int | None = None
 
 class NotesEdit(VKMethod[Any]):
     __api_method__ = 'notes.edit'
-    note_id: int = ...
-    title: str = ...
-    text: str = ...
+    note_id: int = Field(...)
+    title: str = Field(...)
+    text: str = Field(...)
     privacy_view: list[Any] | None = None
     privacy_comment: list[Any] | None = None
 
 class NotesEditComment(VKMethod[Any]):
     __api_method__ = 'notes.editComment'
-    comment_id: int = ...
+    comment_id: int = Field(...)
     owner_id: int | None = None
-    message: str = ...
+    message: str = Field(...)
 
 class NotesGet(VKMethod[Any]):
     __api_method__ = 'notes.get'
@@ -2663,13 +2663,13 @@ class NotesGet(VKMethod[Any]):
 
 class NotesGetById(VKMethod[Any]):
     __api_method__ = 'notes.getById'
-    note_id: int = ...
+    note_id: int = Field(...)
     owner_id: int | None = None
     need_wiki: bool | None = None
 
 class NotesGetComments(VKMethod[Any]):
     __api_method__ = 'notes.getComments'
-    note_id: int = ...
+    note_id: int = Field(...)
     owner_id: int | None = None
     sort: int | None = None
     offset: int | None = None
@@ -2677,7 +2677,7 @@ class NotesGetComments(VKMethod[Any]):
 
 class NotesRestoreComment(VKMethod[Any]):
     __api_method__ = 'notes.restoreComment'
-    comment_id: int = ...
+    comment_id: int = Field(...)
     owner_id: int | None = None
 
 class NotificationsGet(VKMethod[Any]):
@@ -2694,8 +2694,8 @@ class NotificationsMarkAsViewed(VKMethod[Any]):
 
 class NotificationsSendMessage(VKMethod[Any]):
     __api_method__ = 'notifications.sendMessage'
-    user_ids: list[Any] = ...
-    message: str = ...
+    user_ids: list[Any] = Field(...)
+    message: str = Field(...)
     fragment: str | None = None
     group_id: int | None = None
     random_id: int | None = None
@@ -2703,14 +2703,14 @@ class NotificationsSendMessage(VKMethod[Any]):
 
 class OrdersCancelSubscription(VKMethod[Any]):
     __api_method__ = 'orders.cancelSubscription'
-    user_id: int = ...
-    subscription_id: int = ...
+    user_id: int = Field(...)
+    subscription_id: int = Field(...)
     pending_cancel: bool | None = None
 
 class OrdersChangeState(VKMethod[Any]):
     __api_method__ = 'orders.changeState'
-    order_id: int = ...
-    action: str = ...
+    order_id: int = Field(...)
+    action: str = Field(...)
     app_order_id: int | None = None
     test_mode: bool | None = None
 
@@ -2722,8 +2722,8 @@ class OrdersGet(VKMethod[Any]):
 
 class OrdersGetAmount(VKMethod[Any]):
     __api_method__ = 'orders.getAmount'
-    user_id: int = ...
-    votes: list[Any] = ...
+    user_id: int = Field(...)
+    votes: list[Any] = Field(...)
 
 class OrdersGetById(VKMethod[Any]):
     __api_method__ = 'orders.getById'
@@ -2733,22 +2733,22 @@ class OrdersGetById(VKMethod[Any]):
 
 class OrdersGetUserSubscriptionById(VKMethod[Any]):
     __api_method__ = 'orders.getUserSubscriptionById'
-    user_id: int = ...
-    subscription_id: int = ...
+    user_id: int = Field(...)
+    subscription_id: int = Field(...)
 
 class OrdersGetUserSubscriptions(VKMethod[Any]):
     __api_method__ = 'orders.getUserSubscriptions'
-    user_id: int = ...
+    user_id: int = Field(...)
 
 class PagesClearCache(VKMethod[Any]):
     __api_method__ = 'pages.clearCache'
-    url: str = ...
+    url: str = Field(...)
 
 class PagesGet(VKMethod[Any]):
     __api_method__ = 'pages.get'
     owner_id: int | None = None
     page_id: int | None = None
-    global_: bool | None = Field(default=None, alias='global')
+    global_: bool | None = Field(None, alias='global')
     site_preview: bool | None = None
     title: str | None = None
     need_source: bool | None = None
@@ -2756,7 +2756,7 @@ class PagesGet(VKMethod[Any]):
 
 class PagesGetHistory(VKMethod[Any]):
     __api_method__ = 'pages.getHistory'
-    page_id: int = ...
+    page_id: int = Field(...)
     group_id: int | None = None
     user_id: int | None = None
 
@@ -2766,14 +2766,14 @@ class PagesGetTitles(VKMethod[Any]):
 
 class PagesGetVersion(VKMethod[Any]):
     __api_method__ = 'pages.getVersion'
-    version_id: int = ...
+    version_id: int = Field(...)
     group_id: int | None = None
     user_id: int | None = None
     need_html: bool | None = None
 
 class PagesParseWiki(VKMethod[Any]):
     __api_method__ = 'pages.parseWiki'
-    text: str = ...
+    text: str = Field(...)
     group_id: int | None = None
 
 class PagesSave(VKMethod[Any]):
@@ -2786,7 +2786,7 @@ class PagesSave(VKMethod[Any]):
 
 class PagesSaveAccess(VKMethod[Any]):
     __api_method__ = 'pages.saveAccess'
-    page_id: int = ...
+    page_id: int = Field(...)
     group_id: int | None = None
     user_id: int | None = None
     view: int | None = None
@@ -2795,18 +2795,18 @@ class PagesSaveAccess(VKMethod[Any]):
 class PhotosConfirmTag(VKMethod[Any]):
     __api_method__ = 'photos.confirmTag'
     owner_id: int | None = None
-    photo_id: str = ...
-    tag_id: int = ...
+    photo_id: str = Field(...)
+    tag_id: int = Field(...)
 
 class PhotosCopy(VKMethod[Any]):
     __api_method__ = 'photos.copy'
-    owner_id: int = ...
-    photo_id: int = ...
+    owner_id: int = Field(...)
+    photo_id: int = Field(...)
     access_key: str | None = None
 
 class PhotosCreateAlbum(VKMethod[Any]):
     __api_method__ = 'photos.createAlbum'
-    title: str = ...
+    title: str = Field(...)
     group_id: int | None = None
     description: str | None = None
     privacy_view: list[Any] | None = None
@@ -2817,7 +2817,7 @@ class PhotosCreateAlbum(VKMethod[Any]):
 class PhotosCreateComment(VKMethod[Any]):
     __api_method__ = 'photos.createComment'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
     from_group: bool | None = None
@@ -2834,18 +2834,18 @@ class PhotosDelete(VKMethod[Any]):
 
 class PhotosDeleteAlbum(VKMethod[Any]):
     __api_method__ = 'photos.deleteAlbum'
-    album_id: int = ...
+    album_id: int = Field(...)
     group_id: int | None = None
 
 class PhotosDeleteComment(VKMethod[Any]):
     __api_method__ = 'photos.deleteComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
 
 class PhotosEdit(VKMethod[Any]):
     __api_method__ = 'photos.edit'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
     caption: str | None = None
     latitude: float | None = None
     longitude: float | None = None
@@ -2855,7 +2855,7 @@ class PhotosEdit(VKMethod[Any]):
 
 class PhotosEditAlbum(VKMethod[Any]):
     __api_method__ = 'photos.editAlbum'
-    album_id: int = ...
+    album_id: int = Field(...)
     title: str | None = None
     description: str | None = None
     owner_id: int | None = None
@@ -2867,7 +2867,7 @@ class PhotosEditAlbum(VKMethod[Any]):
 class PhotosEditComment(VKMethod[Any]):
     __api_method__ = 'photos.editComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
 
@@ -2921,13 +2921,13 @@ class PhotosGetAllComments(VKMethod[Any]):
 
 class PhotosGetById(VKMethod[Any]):
     __api_method__ = 'photos.getById'
-    photos: list[Any] = ...
+    photos: list[Any] = Field(...)
     extended: bool | None = None
     photo_sizes: bool | None = None
 
 class PhotosGetChatUploadServer(VKMethod[Any]):
     __api_method__ = 'photos.getChatUploadServer'
-    chat_id: int = ...
+    chat_id: int = Field(...)
     crop_x: int | None = None
     crop_y: int | None = None
     crop_width: int | None = None
@@ -2935,7 +2935,7 @@ class PhotosGetChatUploadServer(VKMethod[Any]):
 class PhotosGetComments(VKMethod[Any]):
     __api_method__ = 'photos.getComments'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
     need_likes: bool | None = None
     start_comment_id: int | None = None
     offset: int | None = None
@@ -2947,7 +2947,7 @@ class PhotosGetComments(VKMethod[Any]):
 
 class PhotosGetMarketAlbumUploadServer(VKMethod[Any]):
     __api_method__ = 'photos.getMarketAlbumUploadServer'
-    group_id: int = ...
+    group_id: int = Field(...)
 
 class PhotosGetMessagesUploadServer(VKMethod[Any]):
     __api_method__ = 'photos.getMessagesUploadServer'
@@ -2974,7 +2974,7 @@ class PhotosGetOwnerPhotoUploadServer(VKMethod[Any]):
 class PhotosGetTags(VKMethod[Any]):
     __api_method__ = 'photos.getTags'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
     access_key: str | None = None
 
 class PhotosGetUploadServer(VKMethod[Any]):
@@ -2997,20 +2997,20 @@ class PhotosGetWallUploadServer(VKMethod[Any]):
 class PhotosMakeCover(VKMethod[Any]):
     __api_method__ = 'photos.makeCover'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
     album_id: int | None = None
 
 class PhotosMove(VKMethod[Any]):
     __api_method__ = 'photos.move'
     owner_id: int | None = None
-    target_album_id: int = ...
-    photo_ids: list[Any] = ...
+    target_album_id: int = Field(...)
+    photo_ids: list[Any] = Field(...)
 
 class PhotosPutTag(VKMethod[Any]):
     __api_method__ = 'photos.putTag'
     owner_id: int | None = None
-    photo_id: int = ...
-    user_id: int = ...
+    photo_id: int = Field(...)
+    user_id: int = Field(...)
     x: float | None = None
     y: float | None = None
     x2: float | None = None
@@ -3019,44 +3019,44 @@ class PhotosPutTag(VKMethod[Any]):
 class PhotosRemoveTag(VKMethod[Any]):
     __api_method__ = 'photos.removeTag'
     owner_id: int | None = None
-    photo_id: int = ...
-    tag_id: int = ...
+    photo_id: int = Field(...)
+    tag_id: int = Field(...)
 
 class PhotosReorderAlbums(VKMethod[Any]):
     __api_method__ = 'photos.reorderAlbums'
     owner_id: int | None = None
-    album_id: int = ...
+    album_id: int = Field(...)
     before: int | None = None
     after: int | None = None
 
 class PhotosReorderPhotos(VKMethod[Any]):
     __api_method__ = 'photos.reorderPhotos'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
     before: int | None = None
     after: int | None = None
 
 class PhotosReport(VKMethod[Any]):
     __api_method__ = 'photos.report'
-    owner_id: int = ...
-    photo_id: int = ...
+    owner_id: int = Field(...)
+    photo_id: int = Field(...)
     reason: int | None = None
 
 class PhotosReportComment(VKMethod[Any]):
     __api_method__ = 'photos.reportComment'
-    owner_id: int = ...
-    comment_id: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
     reason: int | None = None
 
 class PhotosRestore(VKMethod[Any]):
     __api_method__ = 'photos.restore'
     owner_id: int | None = None
-    photo_id: int = ...
+    photo_id: int = Field(...)
 
 class PhotosRestoreComment(VKMethod[Any]):
     __api_method__ = 'photos.restoreComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
 
 class PhotosSave(VKMethod[Any]):
     __api_method__ = 'photos.save'
@@ -3071,14 +3071,14 @@ class PhotosSave(VKMethod[Any]):
 
 class PhotosSaveMarketAlbumPhoto(VKMethod[Any]):
     __api_method__ = 'photos.saveMarketAlbumPhoto'
-    group_id: int = ...
-    photo: str = ...
-    server: int = ...
-    hash: str = ...
+    group_id: int = Field(...)
+    photo: str = Field(...)
+    server: int = Field(...)
+    hash: str = Field(...)
 
 class PhotosSaveMessagesPhoto(VKMethod[Any]):
     __api_method__ = 'photos.saveMessagesPhoto'
-    photo: str = ...
+    photo: str = Field(...)
     server: int | None = None
     hash: str | None = None
 
@@ -3103,7 +3103,7 @@ class PhotosSaveWallPhoto(VKMethod[Any]):
     __api_method__ = 'photos.saveWallPhoto'
     user_id: int | None = None
     group_id: int | None = None
-    photo: str = ...
+    photo: str = Field(...)
     server: int | None = None
     hash: str | None = None
     latitude: float | None = None
@@ -3124,15 +3124,15 @@ class PhotosSearch(VKMethod[Any]):
 
 class PodcastsSearchPodcast(VKMethod[Any]):
     __api_method__ = 'podcasts.searchPodcast'
-    search_string: str = ...
+    search_string: str = Field(...)
     offset: int | None = None
     count: int | None = None
 
 class PollsAddVote(VKMethod[Any]):
     __api_method__ = 'polls.addVote'
     owner_id: int | None = None
-    poll_id: int = ...
-    answer_ids: list[Any] = ...
+    poll_id: int = Field(...)
+    answer_ids: list[Any] = Field(...)
     is_board: bool | None = None
 
 class PollsCreate(VKMethod[Any]):
@@ -3151,13 +3151,13 @@ class PollsCreate(VKMethod[Any]):
 class PollsDeleteVote(VKMethod[Any]):
     __api_method__ = 'polls.deleteVote'
     owner_id: int | None = None
-    poll_id: int = ...
+    poll_id: int = Field(...)
     is_board: bool | None = None
 
 class PollsEdit(VKMethod[Any]):
     __api_method__ = 'polls.edit'
     owner_id: int | None = None
-    poll_id: int = ...
+    poll_id: int = Field(...)
     question: str | None = None
     add_answers: str | None = None
     edit_answers: str | None = None
@@ -3174,7 +3174,7 @@ class PollsGetById(VKMethod[Any]):
     __api_method__ = 'polls.getById'
     owner_id: int | None = None
     is_board: bool | None = None
-    poll_id: int = ...
+    poll_id: int = Field(...)
     extended: bool | None = None
     friends_count: int | None = None
     fields: list[Any] | None = None
@@ -3187,8 +3187,8 @@ class PollsGetPhotoUploadServer(VKMethod[Any]):
 class PollsGetVoters(VKMethod[Any]):
     __api_method__ = 'polls.getVoters'
     owner_id: int | None = None
-    poll_id: int = ...
-    answer_ids: list[Any] = ...
+    poll_id: int = Field(...)
+    answer_ids: list[Any] = Field(...)
     is_board: bool | None = None
     friends_only: bool | None = None
     offset: int | None = None
@@ -3203,23 +3203,23 @@ class PollsSavePhoto(VKMethod[Any]):
 
 class PrettyCardsCreate(VKMethod[Any]):
     __api_method__ = 'prettyCards.create'
-    owner_id: int = ...
-    photo: str = ...
-    title: str = ...
-    link: str = ...
+    owner_id: int = Field(...)
+    photo: str = Field(...)
+    title: str = Field(...)
+    link: str = Field(...)
     price: str | None = None
     price_old: str | None = None
     button: str | None = None
 
 class PrettyCardsDelete(VKMethod[Any]):
     __api_method__ = 'prettyCards.delete'
-    owner_id: int = ...
-    card_id: int = ...
+    owner_id: int = Field(...)
+    card_id: int = Field(...)
 
 class PrettyCardsEdit(VKMethod[Any]):
     __api_method__ = 'prettyCards.edit'
-    owner_id: int = ...
-    card_id: int = ...
+    owner_id: int = Field(...)
+    card_id: int = Field(...)
     photo: str | None = None
     title: str | None = None
     link: str | None = None
@@ -3229,14 +3229,14 @@ class PrettyCardsEdit(VKMethod[Any]):
 
 class PrettyCardsGet(VKMethod[Any]):
     __api_method__ = 'prettyCards.get'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     offset: int | None = None
     count: int | None = None
 
 class PrettyCardsGetById(VKMethod[Any]):
     __api_method__ = 'prettyCards.getById'
-    owner_id: int = ...
-    card_ids: list[Any] = ...
+    owner_id: int = Field(...)
+    card_ids: list[Any] = Field(...)
 
 class PrettyCardsGetUploadURL(VKMethod[Any]):
     __api_method__ = 'prettyCards.getUploadURL'
@@ -3254,7 +3254,7 @@ class SearchGetHints(VKMethod[Any]):
 class SecureAddAppEvent(VKMethod[Any]):
     __api_method__ = 'secure.addAppEvent'
     user_id: int | None = None
-    activity_id: int = ...
+    activity_id: int = Field(...)
     value: int | None = None
 
 class SecureCheckToken(VKMethod[Any]):
@@ -3284,25 +3284,25 @@ class SecureGetTransactionsHistory(VKMethod[Any]):
 
 class SecureGetUserLevel(VKMethod[Any]):
     __api_method__ = 'secure.getUserLevel'
-    user_ids: list[Any] = ...
+    user_ids: list[Any] = Field(...)
 
 class SecureGiveEventSticker(VKMethod[Any]):
     __api_method__ = 'secure.giveEventSticker'
-    user_ids: list[Any] = ...
-    achievement_id: int = ...
+    user_ids: list[Any] = Field(...)
+    achievement_id: int = Field(...)
 
 class SecureSendNotification(VKMethod[Any]):
     __api_method__ = 'secure.sendNotification'
     user_ids: list[Any] | None = None
     user_id: int | None = None
-    message: str = ...
+    message: str = Field(...)
     notification_id: int | None = None
     promo_id: int | None = None
 
 class SecureSendSMSNotification(VKMethod[Any]):
     __api_method__ = 'secure.sendSMSNotification'
-    user_id: int = ...
-    message: str = ...
+    user_id: int = Field(...)
+    message: str = Field(...)
 
 class SecureSetCounter(VKMethod[Any]):
     __api_method__ = 'secure.setCounter'
@@ -3325,8 +3325,8 @@ class StatsGet(VKMethod[Any]):
 
 class StatsGetPostReach(VKMethod[Any]):
     __api_method__ = 'stats.getPostReach'
-    owner_id: int = ...
-    post_ids: list[Any] = ...
+    owner_id: int = Field(...)
+    post_ids: list[Any] = Field(...)
 
 class StatsTrackVisitor(VKMethod[Any]):
     __api_method__ = 'stats.trackVisitor'
@@ -3356,13 +3356,13 @@ class StorageGetKeys(VKMethod[Any]):
 
 class StorageSet(VKMethod[Any]):
     __api_method__ = 'storage.set'
-    key: str = ...
+    key: str = Field(...)
     value: str | None = None
     user_id: int | None = None
 
 class StoreAddStickersToFavorite(VKMethod[Any]):
     __api_method__ = 'store.addStickersToFavorite'
-    sticker_ids: list[Any] = ...
+    sticker_ids: list[Any] = Field(...)
 
 class StoreGetFavoriteStickers(VKMethod[Any]):
     __api_method__ = 'store.getFavoriteStickers'
@@ -3388,11 +3388,11 @@ class StoreGetStickersKeywords(VKMethod[Any]):
 
 class StoreRemoveStickersFromFavorite(VKMethod[Any]):
     __api_method__ = 'store.removeStickersFromFavorite'
-    sticker_ids: list[Any] = ...
+    sticker_ids: list[Any] = Field(...)
 
 class StoriesBanOwner(VKMethod[Any]):
     __api_method__ = 'stories.banOwner'
-    owners_ids: list[Any] = ...
+    owners_ids: list[Any] = Field(...)
 
 class StoriesDelete(VKMethod[Any]):
     __api_method__ = 'stories.delete'
@@ -3413,7 +3413,7 @@ class StoriesGetBanned(VKMethod[Any]):
 
 class StoriesGetById(VKMethod[Any]):
     __api_method__ = 'stories.getById'
-    stories: list[Any] = ...
+    stories: list[Any] = Field(...)
     extended: bool | None = None
     fields: list[Any] | None = None
 
@@ -3429,16 +3429,16 @@ class StoriesGetPhotoUploadServer(VKMethod[Any]):
 
 class StoriesGetReplies(VKMethod[Any]):
     __api_method__ = 'stories.getReplies'
-    owner_id: int = ...
-    story_id: int = ...
+    owner_id: int = Field(...)
+    story_id: int = Field(...)
     access_key: str | None = None
     extended: bool | None = None
     fields: list[Any] | None = None
 
 class StoriesGetStats(VKMethod[Any]):
     __api_method__ = 'stories.getStats'
-    owner_id: int = ...
-    story_id: int = ...
+    owner_id: int = Field(...)
+    story_id: int = Field(...)
 
 class StoriesGetVideoUploadServer(VKMethod[Any]):
     __api_method__ = 'stories.getVideoUploadServer'
@@ -3453,7 +3453,7 @@ class StoriesGetVideoUploadServer(VKMethod[Any]):
 class StoriesGetViewers(VKMethod[Any]):
     __api_method__ = 'stories.getViewers'
     owner_id: int | None = None
-    story_id: int = ...
+    story_id: int = Field(...)
     count: int | None = None
     offset: int | None = None
     extended: bool | None = None
@@ -3461,13 +3461,13 @@ class StoriesGetViewers(VKMethod[Any]):
 
 class StoriesHideAllReplies(VKMethod[Any]):
     __api_method__ = 'stories.hideAllReplies'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     group_id: int | None = None
 
 class StoriesHideReply(VKMethod[Any]):
     __api_method__ = 'stories.hideReply'
-    owner_id: int = ...
-    story_id: int = ...
+    owner_id: int = Field(...)
+    story_id: int = Field(...)
 
 class StoriesSave(VKMethod[Any]):
     __api_method__ = 'stories.save'
@@ -3490,7 +3490,7 @@ class StoriesSearch(VKMethod[Any]):
 
 class StoriesSendInteraction(VKMethod[Any]):
     __api_method__ = 'stories.sendInteraction'
-    access_key: str = ...
+    access_key: str = Field(...)
     message: str | None = None
     is_broadcast: bool | None = None
     is_anonymous: bool | None = None
@@ -3498,7 +3498,7 @@ class StoriesSendInteraction(VKMethod[Any]):
 
 class StoriesUnbanOwner(VKMethod[Any]):
     __api_method__ = 'stories.unbanOwner'
-    owners_ids: list[Any] = ...
+    owners_ids: list[Any] = Field(...)
 
 class StreamingGetServerUrl(VKMethod[Any]):
     __api_method__ = 'streaming.getServerUrl'
@@ -3513,12 +3513,12 @@ class StreamingGetStats(VKMethod[Any]):
 
 class StreamingGetStem(VKMethod[Any]):
     __api_method__ = 'streaming.getStem'
-    word: str = ...
+    word: str = Field(...)
 
 class TranslationsTranslate(VKMethod[Any]):
     __api_method__ = 'translations.translate'
-    texts: list[Any] = ...
-    translation_language: str = ...
+    texts: list[Any] = Field(...)
+    translation_language: str = Field(...)
 
 class UsersGet(VKMethod[Any]):
     __api_method__ = 'users.get'
@@ -3545,8 +3545,8 @@ class UsersGetSubscriptions(VKMethod[Any]):
 
 class UsersReport(VKMethod[Any]):
     __api_method__ = 'users.report'
-    user_id: int = ...
-    type: str = ...
+    user_id: int = Field(...)
+    type: str = Field(...)
     comment: str | None = None
 
 class UsersSearch(VKMethod[Any]):
@@ -3590,11 +3590,11 @@ class UsersSearch(VKMethod[Any]):
 
 class UtilsCheckLink(VKMethod[Any]):
     __api_method__ = 'utils.checkLink'
-    url: str = ...
+    url: str = Field(...)
 
 class UtilsDeleteFromLastShortened(VKMethod[Any]):
     __api_method__ = 'utils.deleteFromLastShortened'
-    key: str = ...
+    key: str = Field(...)
 
 class UtilsGetLastShortenedLinks(VKMethod[Any]):
     __api_method__ = 'utils.getLastShortenedLinks'
@@ -3603,7 +3603,7 @@ class UtilsGetLastShortenedLinks(VKMethod[Any]):
 
 class UtilsGetLinkStats(VKMethod[Any]):
     __api_method__ = 'utils.getLinkStats'
-    key: str = ...
+    key: str = Field(...)
     source: str | None = None
     access_key: str | None = None
     interval: str | None = None
@@ -3616,18 +3616,18 @@ class UtilsGetServerTime(VKMethod[Any]):
 
 class UtilsGetShortLink(VKMethod[Any]):
     __api_method__ = 'utils.getShortLink'
-    url: str = ...
+    url: str = Field(...)
     private: bool | None = None
 
 class UtilsResolveScreenName(VKMethod[Any]):
     __api_method__ = 'utils.resolveScreenName'
-    screen_name: str = ...
+    screen_name: str = Field(...)
 
 class VideoAdd(VKMethod[Any]):
     __api_method__ = 'video.add'
     target_id: int | None = None
-    video_id: int = ...
-    owner_id: int = ...
+    video_id: int = Field(...)
+    owner_id: int = Field(...)
 
 class VideoAddAlbum(VKMethod[Any]):
     __api_method__ = 'video.addAlbum'
@@ -3640,13 +3640,13 @@ class VideoAddToAlbum(VKMethod[Any]):
     target_id: int | None = None
     album_id: int | None = None
     album_ids: list[Any] | None = None
-    owner_id: int = ...
-    video_id: int = ...
+    owner_id: int = Field(...)
+    video_id: int = Field(...)
 
 class VideoCreateComment(VKMethod[Any]):
     __api_method__ = 'video.createComment'
     owner_id: int | None = None
-    video_id: int = ...
+    video_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
     from_group: bool | None = None
@@ -3657,30 +3657,30 @@ class VideoCreateComment(VKMethod[Any]):
 
 class VideoDelete(VKMethod[Any]):
     __api_method__ = 'video.delete'
-    video_id: int = ...
+    video_id: int = Field(...)
     owner_id: int | None = None
     target_id: int | None = None
 
 class VideoDeleteAlbum(VKMethod[Any]):
     __api_method__ = 'video.deleteAlbum'
     group_id: int | None = None
-    album_id: int = ...
+    album_id: int = Field(...)
     owner_id: int | None = None
 
 class VideoDeleteComment(VKMethod[Any]):
     __api_method__ = 'video.deleteComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
 
 class VideoDeleteThread(VKMethod[Any]):
     __api_method__ = 'video.deleteThread'
-    owner_id: int = ...
-    thread_id: int = ...
+    owner_id: int = Field(...)
+    thread_id: int = Field(...)
 
 class VideoEdit(VKMethod[Any]):
     __api_method__ = 'video.edit'
     owner_id: int | None = None
-    video_id: int = ...
+    video_id: int = Field(...)
     name: str | None = None
     desc: str | None = None
     privacy_view: list[Any] | None = None
@@ -3692,7 +3692,7 @@ class VideoEdit(VKMethod[Any]):
 class VideoEditAlbum(VKMethod[Any]):
     __api_method__ = 'video.editAlbum'
     group_id: int | None = None
-    album_id: int = ...
+    album_id: int = Field(...)
     title: str | None = None
     privacy: list[Any] | None = None
     owner_id: int | None = None
@@ -3700,7 +3700,7 @@ class VideoEditAlbum(VKMethod[Any]):
 class VideoEditComment(VKMethod[Any]):
     __api_method__ = 'video.editComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
 
@@ -3718,7 +3718,7 @@ class VideoGet(VKMethod[Any]):
 class VideoGetAlbumById(VKMethod[Any]):
     __api_method__ = 'video.getAlbumById'
     owner_id: int | None = None
-    album_id: int = ...
+    album_id: int = Field(...)
 
 class VideoGetAlbums(VKMethod[Any]):
     __api_method__ = 'video.getAlbums'
@@ -3731,14 +3731,14 @@ class VideoGetAlbums(VKMethod[Any]):
 class VideoGetAlbumsByVideo(VKMethod[Any]):
     __api_method__ = 'video.getAlbumsByVideo'
     target_id: int | None = None
-    owner_id: int = ...
-    video_id: int = ...
+    owner_id: int = Field(...)
+    video_id: int = Field(...)
     extended: bool | None = None
 
 class VideoGetComments(VKMethod[Any]):
     __api_method__ = 'video.getComments'
     owner_id: int | None = None
-    video_id: int = ...
+    video_id: int = Field(...)
     need_likes: bool | None = None
     start_comment_id: int | None = None
     offset: int | None = None
@@ -3752,17 +3752,17 @@ class VideoGetComments(VKMethod[Any]):
 class VideoGetLongPollServer(VKMethod[Any]):
     __api_method__ = 'video.getLongPollServer'
     owner_id: int | None = None
-    video_id: int = ...
+    video_id: int = Field(...)
 
 class VideoGetOembed(VKMethod[Any]):
     __api_method__ = 'video.getOembed'
-    url: str = ...
+    url: str = Field(...)
     maxwidth: int | None = None
     maxheight: int | None = None
 
 class VideoGetThumbUploadUrl(VKMethod[Any]):
     __api_method__ = 'video.getThumbUploadUrl'
-    owner_id: int = ...
+    owner_id: int = Field(...)
 
 class VideoLiveGetCategories(VKMethod[Any]):
     __api_method__ = 'video.liveGetCategories'
@@ -3773,13 +3773,13 @@ class VideoRemoveFromAlbum(VKMethod[Any]):
     target_id: int | None = None
     album_id: int | None = None
     album_ids: list[Any] | None = None
-    owner_id: int = ...
-    video_id: int = ...
+    owner_id: int = Field(...)
+    video_id: int = Field(...)
 
 class VideoReorderAlbums(VKMethod[Any]):
     __api_method__ = 'video.reorderAlbums'
     owner_id: int | None = None
-    album_id: int = ...
+    album_id: int = Field(...)
     before: int | None = None
     after: int | None = None
 
@@ -3787,8 +3787,8 @@ class VideoReorderVideos(VKMethod[Any]):
     __api_method__ = 'video.reorderVideos'
     target_id: int | None = None
     album_id: int | None = None
-    owner_id: int = ...
-    video_id: int = ...
+    owner_id: int = Field(...)
+    video_id: int = Field(...)
     before_owner_id: int | None = None
     before_video_id: int | None = None
     after_owner_id: int | None = None
@@ -3796,32 +3796,32 @@ class VideoReorderVideos(VKMethod[Any]):
 
 class VideoReport(VKMethod[Any]):
     __api_method__ = 'video.report'
-    owner_id: int = ...
-    video_id: int = ...
+    owner_id: int = Field(...)
+    video_id: int = Field(...)
     reason: int | None = None
     comment: str | None = None
     search_query: str | None = None
 
 class VideoReportComment(VKMethod[Any]):
     __api_method__ = 'video.reportComment'
-    owner_id: int = ...
-    comment_id: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
     reason: int | None = None
 
 class VideoRestore(VKMethod[Any]):
     __api_method__ = 'video.restore'
-    video_id: int = ...
+    video_id: int = Field(...)
     owner_id: int | None = None
 
 class VideoRestoreComment(VKMethod[Any]):
     __api_method__ = 'video.restoreComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
 
 class VideoRestoreThread(VKMethod[Any]):
     __api_method__ = 'video.restoreThread'
-    owner_id: int = ...
-    thread_id: int = ...
+    owner_id: int = Field(...)
+    thread_id: int = Field(...)
 
 class VideoSave(VKMethod[Any]):
     __api_method__ = 'video.save'
@@ -3842,8 +3842,8 @@ class VideoSave(VKMethod[Any]):
 
 class VideoSaveUploadedThumb(VKMethod[Any]):
     __api_method__ = 'video.saveUploadedThumb'
-    owner_id: int = ...
-    thumb_json: str = ...
+    owner_id: int = Field(...)
+    thumb_json: str = Field(...)
     thumb_size: str | None = None
     random_tag: str | None = None
     video_id: int | None = None
@@ -3886,22 +3886,22 @@ class VideoStopStreaming(VKMethod[Any]):
 
 class VideoUnpinComment(VKMethod[Any]):
     __api_method__ = 'video.unpinComment'
-    owner_id: int = ...
-    comment_id: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
 
 class WallCheckCopyrightLink(VKMethod[Any]):
     __api_method__ = 'wall.checkCopyrightLink'
-    link: str = ...
+    link: str = Field(...)
 
 class WallCloseComments(VKMethod[Any]):
     __api_method__ = 'wall.closeComments'
-    owner_id: int = ...
-    post_id: int = ...
+    owner_id: int = Field(...)
+    post_id: int = Field(...)
 
 class WallCreateComment(VKMethod[Any]):
     __api_method__ = 'wall.createComment'
     owner_id: int | None = None
-    post_id: int = ...
+    post_id: int = Field(...)
     from_group: int | None = None
     message: str | None = None
     reply_to_comment: int | None = None
@@ -3918,12 +3918,12 @@ class WallDeleteComment(VKMethod[Any]):
     __api_method__ = 'wall.deleteComment'
     owner_id: int | None = None
     post_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
 
 class WallEdit(VKMethod[Any]):
     __api_method__ = 'wall.edit'
     owner_id: int | None = None
-    post_id: int = ...
+    post_id: int = Field(...)
     friends_only: bool | None = None
     message: str | None = None
     attachments: list[Any] | None = None
@@ -3945,7 +3945,7 @@ class WallEdit(VKMethod[Any]):
 class WallEditAdsStealth(VKMethod[Any]):
     __api_method__ = 'wall.editAdsStealth'
     owner_id: int | None = None
-    post_id: int = ...
+    post_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
     signed: bool | None = None
@@ -3961,7 +3961,7 @@ class WallEditComment(VKMethod[Any]):
     __api_method__ = 'wall.editComment'
     owner_id: int | None = None
     post_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
 
@@ -3976,7 +3976,7 @@ class WallGet(VKMethod[Any]):
 
 class WallGetById(VKMethod[Any]):
     __api_method__ = 'wall.getById'
-    posts: list[Any] = ...
+    posts: list[Any] = Field(...)
     extended: bool | None = None
     copy_history_depth: int | None = None
     fields: list[Any] | None = None
@@ -3984,7 +3984,7 @@ class WallGetById(VKMethod[Any]):
 class WallGetComment(VKMethod[Any]):
     __api_method__ = 'wall.getComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
     extended: bool | None = None
     fields: list[Any] | None = None
 
@@ -4012,12 +4012,12 @@ class WallGetReposts(VKMethod[Any]):
 
 class WallOpenComments(VKMethod[Any]):
     __api_method__ = 'wall.openComments'
-    owner_id: int = ...
-    post_id: int = ...
+    owner_id: int = Field(...)
+    post_id: int = Field(...)
 
 class WallParseAttachedLink(VKMethod[Any]):
     __api_method__ = 'wall.parseAttachedLink'
-    links: str = ...
+    links: str = Field(...)
     extended: bool | None = None
     fields: list[Any] | None = None
     name_case: str | None = None
@@ -4025,7 +4025,7 @@ class WallParseAttachedLink(VKMethod[Any]):
 class WallPin(VKMethod[Any]):
     __api_method__ = 'wall.pin'
     owner_id: int | None = None
-    post_id: int = ...
+    post_id: int = Field(...)
 
 class WallPost(VKMethod[Any]):
     __api_method__ = 'wall.post'
@@ -4052,7 +4052,7 @@ class WallPost(VKMethod[Any]):
 
 class WallPostAdsStealth(VKMethod[Any]):
     __api_method__ = 'wall.postAdsStealth'
-    owner_id: int = ...
+    owner_id: int = Field(...)
     message: str | None = None
     attachments: list[Any] | None = None
     signed: bool | None = None
@@ -4067,19 +4067,19 @@ class WallPostAdsStealth(VKMethod[Any]):
 
 class WallReportComment(VKMethod[Any]):
     __api_method__ = 'wall.reportComment'
-    owner_id: int = ...
-    comment_id: int = ...
-    reason: int = ...
+    owner_id: int = Field(...)
+    comment_id: int = Field(...)
+    reason: int = Field(...)
 
 class WallReportPost(VKMethod[Any]):
     __api_method__ = 'wall.reportPost'
-    owner_id: int = ...
-    post_id: int = ...
-    reason: int = ...
+    owner_id: int = Field(...)
+    post_id: int = Field(...)
+    reason: int = Field(...)
 
 class WallRepost(VKMethod[Any]):
     __api_method__ = 'wall.repost'
-    object: str = ...
+    object: str = Field(...)
     message: str | None = None
     group_id: int | None = None
     mark_as_ads: bool | None = None
@@ -4093,7 +4093,7 @@ class WallRestore(VKMethod[Any]):
 class WallRestoreComment(VKMethod[Any]):
     __api_method__ = 'wall.restoreComment'
     owner_id: int | None = None
-    comment_id: int = ...
+    comment_id: int = Field(...)
 
 class WallSearch(VKMethod[Any]):
     __api_method__ = 'wall.search'
@@ -4108,7 +4108,7 @@ class WallSearch(VKMethod[Any]):
 class WallUnpin(VKMethod[Any]):
     __api_method__ = 'wall.unpin'
     owner_id: int | None = None
-    post_id: int = ...
+    post_id: int = Field(...)
 
 class WidgetsGetComments(VKMethod[Any]):
     __api_method__ = 'widgets.getComments'

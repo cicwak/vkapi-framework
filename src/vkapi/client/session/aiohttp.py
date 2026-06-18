@@ -4,7 +4,7 @@ import asyncio
 from collections.abc import AsyncGenerator
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
-from aiohttp import ClientError, ClientSession, FormData, TCPConnector
+from aiohttp import ClientError, ClientSession, ClientTimeout, FormData, TCPConnector
 
 from vkapi.exceptions import VKNetworkError
 
@@ -12,7 +12,7 @@ from .base import BaseSession
 
 if TYPE_CHECKING:
     from vkapi.client.bot import Bot
-    from vkapi.methods.base import VKMethod
+    from vkapi.methods.base import MethodT
 
 T = TypeVar("T")
 
@@ -45,7 +45,7 @@ class AiohttpSession(BaseSession):
     async def make_request(
         self,
         bot: Bot,
-        method: VKMethod[T],
+        method: MethodT[T],
         timeout: float | None = None,
     ) -> T:
         session = await self.create_session()
@@ -57,7 +57,7 @@ class AiohttpSession(BaseSession):
                 self.build_url(method.__api_method__),
                 data=data,
                 proxy=self.proxy,
-                timeout=self.timeout if timeout is None else timeout,
+                timeout=ClientTimeout(total=self.timeout if timeout is None else timeout),
             ) as response:
                 content = await response.text()
         except TimeoutError as exc:
@@ -75,7 +75,11 @@ class AiohttpSession(BaseSession):
         chunk_size: int = 65536,
     ) -> AsyncGenerator[bytes, None]:
         session = await self.create_session()
-        async with session.get(url, proxy=self.proxy, timeout=timeout) as response:
+        async with session.get(
+            url,
+            proxy=self.proxy,
+            timeout=ClientTimeout(total=timeout),
+        ) as response:
             response.raise_for_status()
             async for chunk in response.content.iter_chunked(chunk_size):
                 yield chunk

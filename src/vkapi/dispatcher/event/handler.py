@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import inspect
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, cast
 
 from vkapi.dependency import maybe_await, resolve_dependencies
 
@@ -34,13 +33,11 @@ class HandlerObject:
         event: Any,
         data: dict[str, Any],
     ) -> FilterResult:
-        if callable(filter_) and not inspect.isfunction(filter_):
-            callback = filter_.__call__
-        else:
-            callback = filter_
+        callback = filter_
         kwargs = await resolve_dependencies(callback, event=event, data=data, cache={})
         kwargs.pop("event", None)
-        return await maybe_await(callback(event, **kwargs))
+        result = await maybe_await(callback(event, **kwargs))
+        return cast(FilterResult, result)
 
     async def call(self, event: Any, data: dict[str, Any]) -> Any:
         cache = data.setdefault("_dependency_cache", {})

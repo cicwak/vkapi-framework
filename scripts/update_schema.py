@@ -61,12 +61,15 @@ def field_line(param: dict[str, Any]) -> str:
     raw_name = str(param["name"])
     py_name = snake(raw_name)
     ann = annotation(param)
-    default = "..." if param.get("required") else "None"
-    if default == "None":
+    required = bool(param.get("required"))
+    default = "..." if required else "None"
+    if not required:
         ann = f"{ann} | None"
     if py_name != raw_name:
-        return f"    {py_name}: {ann} = Field(default={default}, alias={raw_name!r})"
-    return f"    {py_name}: {ann} = {default}"
+        return f"    {py_name}: {ann} = Field({default}, alias={raw_name!r})"
+    if required:
+        return f"    {py_name}: {ann} = Field(...)"
+    return f"    {py_name}: {ann} = None"
 
 
 def method_func_line(method: dict[str, Any]) -> tuple[str, str]:

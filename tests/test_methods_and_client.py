@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import AsyncGenerator
 from typing import Any
 
 import pytest
@@ -8,7 +9,7 @@ from vkapi import Bot
 from vkapi.client.session.base import BaseSession
 from vkapi.exceptions import VKAccessDeniedError, VKRateLimitError
 from vkapi.methods import MessagesSend
-from vkapi.methods.base import VKMethod
+from vkapi.methods.base import MethodT
 
 
 class FakeSession(BaseSession):
@@ -23,15 +24,20 @@ class FakeSession(BaseSession):
     async def make_request(
         self,
         bot: Bot,
-        method: VKMethod[Any],
+        method: MethodT[Any],
         timeout: float | None = None,
     ) -> Any:
         self.calls.append((method.__api_method__, self.prepare_params(bot, method)))
         return self.result
 
-    async def stream_content(self, url: str, *, timeout: float = 30.0, chunk_size: int = 65536):
-        if False:
-            yield b""
+    async def stream_content(
+        self,
+        url: str,
+        *,
+        timeout: float = 30.0,
+        chunk_size: int = 65536,
+    ) -> AsyncGenerator[bytes, None]:
+        yield b""
 
 
 def test_generated_method_serialization() -> None:

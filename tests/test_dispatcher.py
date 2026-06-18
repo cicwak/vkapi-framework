@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import AsyncGenerator
 from typing import Any
 
 import pytest
@@ -7,7 +8,7 @@ import pytest
 from vkapi import Bot, Depends, Dispatcher, Router
 from vkapi.client.session.base import BaseSession
 from vkapi.filters import Command, F, Payload, PeerType, Text
-from vkapi.methods.base import VKMethod
+from vkapi.methods.base import MethodT
 from vkapi.types import Message, Update
 
 
@@ -18,14 +19,19 @@ class FakeSession(BaseSession):
     async def make_request(
         self,
         bot: Bot,
-        method: VKMethod[Any],
+        method: MethodT[Any],
         timeout: float | None = None,
     ) -> Any:
         return {}
 
-    async def stream_content(self, url: str, *, timeout: float = 30.0, chunk_size: int = 65536):
-        if False:
-            yield b""
+    async def stream_content(
+        self,
+        url: str,
+        *,
+        timeout: float = 30.0,
+        chunk_size: int = 65536,
+    ) -> AsyncGenerator[bytes, None]:
+        yield b""
 
 
 def raw_message(text: str = "/start", payload: str | None = None) -> dict[str, Any]:
@@ -52,8 +58,8 @@ async def test_dispatcher_routes_message_with_di_and_filters() -> None:
         return "dep"
 
     @router.message(Command("start"), PeerType("chat"))
-    async def handler(message: Message, bot: Bot, label: str = Depends(get_label)) -> None:
-        seen.append((message.text, bot, label))
+    async def handler(message: Message, bot: Bot, label: Any = Depends(get_label)) -> None:
+        seen.append((message.text, bot, str(label)))
 
     dp.include_router(router)
 
@@ -84,7 +90,7 @@ async def test_polling_processes_fake_updates() -> None:
     dp = Dispatcher()
     hits: list[str] = []
 
-    async def listen(bot: Bot, **kwargs: Any):
+    async def listen(bot: Bot, **kwargs: Any) -> AsyncGenerator[Update, None]:
         yield Update.model_validate(raw_message("one"))
         dp.stop_polling()
 
