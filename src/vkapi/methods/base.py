@@ -33,7 +33,7 @@ class VKMethod(BaseModel, Generic[T]):
     )
 
     __api_method__: ClassVar[str]
-    __returning__: ClassVar[type[Any]] = Any
+    __returning__: ClassVar[Any] = Any
     _bot: Bot | None = None
 
     def as_(self, bot: Bot) -> VKMethod[T]:

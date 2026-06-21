@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from collections.abc import Mapping
+from typing import Any, Literal, cast
 
 from .base import Filter
 
@@ -32,6 +33,7 @@ class ChatAction(Filter):
 
     async def __call__(self, event: Any, **kwargs: Any) -> bool:
         action = getattr(event, "action", None)
-        if not isinstance(action, dict):
+        if not isinstance(action, Mapping):
             return False
+        action = cast(Mapping[str, Any], action)
         return action.get("type") in self.types

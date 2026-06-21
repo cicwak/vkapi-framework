@@ -6,13 +6,17 @@ import keyword
 import re
 import urllib.request
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src" / "vkapi" / "methods" / "generated.py"
 BASE_URL = "https://raw.githubusercontent.com/VKCOM/vk-api-schema/master"
 TREE_URL = "https://api.github.com/repos/VKCOM/vk-api-schema/git/trees/master?recursive=1"
 USER_AGENT = {"User-Agent": "vkapi-codegen"}
+
+
+def any_list(value: Any) -> list[Any]:
+    return cast(list[Any], value)
 
 
 def fetch_json(url: str) -> Any:
@@ -36,7 +40,8 @@ def pascal(name: str) -> str:
 def annotation(param: dict[str, Any]) -> str:
     value_type = param.get("type")
     if isinstance(value_type, list):
-        types = sorted({map_type(item) for item in value_type})
+        value_types = any_list(value_type)
+        types = sorted({map_type(item) for item in value_types})
         return " | ".join(types) if types else "Any"
     return map_type(value_type)
 
@@ -86,7 +91,8 @@ def method_func_line(method: dict[str, Any]) -> tuple[str, str]:
 
 
 def main() -> None:
-    tree = fetch_json(TREE_URL)["tree"]
+    tree_payload = cast(dict[str, Any], fetch_json(TREE_URL))
+    tree = cast(list[dict[str, Any]], tree_payload["tree"])
     paths = sorted(
         item["path"]
         for item in tree
@@ -95,8 +101,8 @@ def main() -> None:
 
     methods: list[dict[str, Any]] = []
     for path in paths:
-        data = fetch_json(f"{BASE_URL}/{path}")
-        methods.extend(data.get("methods", []))
+        data = cast(dict[str, Any], fetch_json(f"{BASE_URL}/{path}"))
+        methods.extend(cast(list[dict[str, Any]], data.get("methods", [])))
 
     methods.sort(key=lambda item: item["name"])
     groups: dict[str, list[str]] = {}
@@ -129,7 +135,7 @@ def main() -> None:
                 f"    __api_method__ = {api_name!r}",
             ],
         )
-        params = method.get("parameters") or []
+        params = cast(list[dict[str, Any]], method.get("parameters") or [])
         if params:
             lines.extend(field_line(param) for param in params)
         else:

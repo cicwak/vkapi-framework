@@ -1,14 +1,18 @@
 from __future__ import annotations
 
-from collections.abc import Callable
-from typing import Any
+from collections.abc import Callable, Mapping
+from typing import Any, cast
 
 from .base import Filter
 
 
+def _identity(event: Any) -> Any:
+    return event
+
+
 class MagicFilter(Filter):
     def __init__(self, getter: Callable[[Any], Any] | None = None) -> None:
-        self.getter = getter or (lambda event: event)
+        self.getter: Callable[[Any], Any] = getter or _identity
 
     def _chain(self, step: Callable[[Any], Any]) -> MagicFilter:
         def getter(event: Any) -> Any:
@@ -20,7 +24,12 @@ class MagicFilter(Filter):
         return self._chain(lambda value: getattr(value, item, None))
 
     def __getitem__(self, item: str) -> MagicFilter:
-        return self._chain(lambda value: value.get(item) if isinstance(value, dict) else None)
+        def get_item(value: Any) -> Any:
+            if isinstance(value, Mapping):
+                return cast(Mapping[str, Any], value).get(item)
+            return None
+
+        return self._chain(get_item)
 
     async def __call__(self, event: Any, **kwargs: Any) -> bool:
         return bool(self.getter(event))

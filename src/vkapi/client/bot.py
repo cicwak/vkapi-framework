@@ -52,11 +52,14 @@ class Bot:
         self.upload = Upload(self)
 
     def _install_generated_namespaces(self) -> None:
+        method_groups: dict[str, Any]
         try:
-            from vkapi.methods.generated import METHOD_GROUPS
+            from vkapi.methods.generated import METHOD_GROUPS as generated_method_groups
+
+            method_groups = generated_method_groups
         except ImportError:
-            METHOD_GROUPS = {}
-        for group_name, namespace_cls in METHOD_GROUPS.items():
+            method_groups = {}
+        for group_name, namespace_cls in method_groups.items():
             if group_name == "api":
                 continue
             namespace = namespace_cls(self)

@@ -57,11 +57,12 @@ class BaseSession(abc.ABC):
 
         if not isinstance(payload, dict):
             raise VKDecodeError("VK API response must be an object", payload)
+        payload = cast(dict[str, Any], payload)
 
         if "error" in payload:
             error = payload["error"]
             if isinstance(error, dict):
-                raise make_api_error(method, error)
+                raise make_api_error(method, cast(dict[str, Any], error))
             raise VKDecodeError("VK API error payload must be an object", payload)
 
         if "response" not in payload:

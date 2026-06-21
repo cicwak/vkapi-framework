@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import Any
+from collections.abc import Mapping
+from typing import Any, cast
 
 from .base import Filter
 
@@ -15,8 +16,9 @@ class Payload(Filter):
         if self.value is not None and payload != self.value:
             return False
         if self.contains:
-            if not isinstance(payload, dict):
+            if not isinstance(payload, Mapping):
                 return False
+            payload = cast(Mapping[str, Any], payload)
             for key, value in self.contains.items():
                 if payload.get(key) != value:
                     return False

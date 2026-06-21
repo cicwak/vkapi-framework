@@ -47,6 +47,7 @@ dev = [
   "ruff>=0.8",
   "mypy>=1.13",
   "pyrefly>=1",
+  "pyright>=1.1",
   "build>=1.2",
   "twine>=6.0",
 ]
@@ -115,3 +116,15 @@ search-path = ["src"]
 python-version = "3.11"
 python-platform = "linux"
 ignore-errors-in-generated-code = true
+
+[tool.pyright]
+include = ["src", "scripts"]
+exclude = ["tests", "docs/_build", "dist", "build"]
+pythonVersion = "3.11"
+pythonPlatform = "Linux"
+typeCheckingMode = "strict"
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+reportMissingTypeStubs = "error"
+reportUnnecessaryTypeIgnoreComment = "error"

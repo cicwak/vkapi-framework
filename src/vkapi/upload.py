@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from aiohttp import ClientSession, FormData
 
@@ -24,10 +24,13 @@ class Upload:
             payload = await response.json()
         if not isinstance(payload, dict):
             raise RuntimeError("VK upload response must be an object")
-        return payload
+        return cast(dict[str, Any], payload)
 
     async def message_photo(self, peer_id: int, path: str | Path) -> str:
-        server = await self.bot.api("photos.getMessagesUploadServer", peer_id=peer_id)
+        server = cast(
+            dict[str, Any],
+            await self.bot.api("photos.getMessagesUploadServer", peer_id=peer_id),
+        )
         upload = await self._post_file(str(server["upload_url"]), "photo", path)
         saved = await self.bot.api(
             "photos.saveMessagesPhoto",
@@ -35,13 +38,16 @@ class Upload:
             server=upload.get("server"),
             hash=upload.get("hash"),
         )
-        item = saved[0] if isinstance(saved, list) else saved
+        item = cast(dict[str, Any], saved[0] if isinstance(saved, list) else saved)
         return f"photo{item['owner_id']}_{item['id']}"
 
     async def doc(self, peer_id: int, path: str | Path, *, type: str = "doc") -> str:
-        server = await self.bot.api("docs.getMessagesUploadServer", peer_id=peer_id, type=type)
+        server = cast(
+            dict[str, Any],
+            await self.bot.api("docs.getMessagesUploadServer", peer_id=peer_id, type=type),
+        )
         upload = await self._post_file(str(server["upload_url"]), "file", path)
-        saved = await self.bot.api("docs.save", file=upload.get("file"))
+        saved = cast(dict[str, Any], await self.bot.api("docs.save", file=upload.get("file")))
         item = saved.get(type) or saved.get("doc") or saved
         return f"doc{item['owner_id']}_{item['id']}"
 

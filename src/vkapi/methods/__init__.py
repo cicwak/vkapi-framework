@@ -6,4 +6,4 @@ try:
 except ImportError:  # pragma: no cover - generated file is created by scripts/update_schema.py
     _generated_all = []
 
-__all__ = ["RawMethod", "VKMethod", *_generated_all]
+__all__ = ["RawMethod", "VKMethod", *_generated_all]  # pyright: ignore[reportUnsupportedDunderAll]

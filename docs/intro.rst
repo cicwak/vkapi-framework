@@ -67,6 +67,31 @@ For methods that are not yet generated, use the raw API helper:
 See :doc:`methods` for the full generated method list, VK documentation links,
 required parameters, and more examples.
 
+FSM
+---
+
+Handlers can keep per-user conversation state with the built-in FSM helpers:
+
+.. code-block:: python
+
+   from vkapi.fsm import FSMContext, State, StateFilter, StatesGroup
+
+
+   class Form(StatesGroup):
+       name = State()
+
+
+   @dp.message(Command("start"))
+   async def start(message: Message, state: FSMContext) -> None:
+       await state.set_state(Form.name)
+       await message.answer("Enter your name")
+
+
+   @dp.message(StateFilter(Form.name))
+   async def name(message: Message, state: FSMContext) -> None:
+       await state.clear()
+       await message.answer(f"Hello, {message.text}")
+
 Upload helpers
 --------------
 

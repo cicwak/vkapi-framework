@@ -11,11 +11,19 @@ from .bases import FilterResult
 CallbackType = Callable[..., Any]
 
 
+def _empty_callbacks() -> list[CallbackType]:
+    return []
+
+
+def _empty_flags() -> dict[str, Any]:
+    return {}
+
+
 @dataclass
 class HandlerObject:
     callback: CallbackType
-    filters: list[CallbackType] = field(default_factory=list)
-    flags: dict[str, Any] = field(default_factory=dict)
+    filters: list[CallbackType] = field(default_factory=_empty_callbacks)
+    flags: dict[str, Any] = field(default_factory=_empty_flags)
 
     async def check(self, event: Any, **kwargs: Any) -> tuple[bool, dict[str, Any]]:
         data: dict[str, Any] = {}

@@ -31,6 +31,13 @@ Filters
    :members:
    :undoc-members:
 
+FSM
+---
+
+.. automodule:: vkapi.fsm
+   :members:
+   :undoc-members:
+
 Keyboards
 ---------
 

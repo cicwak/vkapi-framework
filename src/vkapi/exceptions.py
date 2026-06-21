@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, cast
 
 
 class VKAPIError(Exception):
@@ -77,12 +77,23 @@ ERROR_CODE_MAP: dict[int, type[VKAPIResponseError]] = {
 }
 
 
+def _any_list(value: Any) -> list[Any]:
+    return cast(list[Any], value)
+
+
 def make_api_error(method: str, error: dict[str, Any]) -> VKAPIResponseError:
     error_code = int(error.get("error_code", 0))
     error_cls = ERROR_CODE_MAP.get(error_code, VKAPIResponseError)
-    request_params = error.get("request_params")
-    if not isinstance(request_params, list):
+    raw_request_params = error.get("request_params")
+    if not isinstance(raw_request_params, list):
         request_params = []
+    else:
+        request_param_items = _any_list(raw_request_params)
+        request_params = [
+            cast(dict[str, Any], item)
+            for item in request_param_items
+            if isinstance(item, dict)
+        ]
     return error_cls(
         error_code=error_code,
         error_msg=str(error.get("error_msg", "VK API error")),

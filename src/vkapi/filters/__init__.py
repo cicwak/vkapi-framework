@@ -1,3 +1,5 @@
+from vkapi.fsm import StateFilter
+
 from .base import AndFilter, Filter, InvertFilter, OrFilter
 from .command import Command
 from .magic import F, MagicFilter
@@ -16,5 +18,6 @@ __all__ = [
     "OrFilter",
     "Payload",
     "PeerType",
+    "StateFilter",
     "Text",
 ]

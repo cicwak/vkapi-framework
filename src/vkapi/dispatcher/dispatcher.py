@@ -10,6 +10,8 @@ from aiohttp import ClientError, ClientSession, ClientTimeout
 
 from vkapi.client.bot import Bot
 from vkapi.dispatcher.event.bases import UNHANDLED
+from vkapi.fsm import BaseStorage, FSMStrategy, MemoryStorage
+from vkapi.fsm.middleware import FSMMiddleware
 from vkapi.types import Update
 from vkapi.utils.backoff import Backoff, BackoffConfig
 
@@ -17,12 +19,24 @@ from .router import Router
 
 
 class Dispatcher(Router):
-    def __init__(self, *, name: str | None = None, **workflow_data: Any) -> None:
+    def __init__(
+        self,
+        *,
+        name: str | None = None,
+        storage: BaseStorage | None = None,
+        fsm_strategy: FSMStrategy = FSMStrategy.USER_IN_PEER,
+        **workflow_data: Any,
+    ) -> None:
         super().__init__(name=name)
         self.workflow_data = workflow_data
+        self.storage = storage if storage is not None else MemoryStorage()
+        self.fsm_strategy = fsm_strategy
         self._running_lock = asyncio.Lock()
         self._stop_signal: asyncio.Event | None = None
         self._handle_update_tasks: set[asyncio.Task[Any]] = set()
+        fsm_middleware = FSMMiddleware(self.storage, self.fsm_strategy)
+        for observer in self.observers.values():
+            observer.outer_middleware(fsm_middleware)
 
     async def feed_update(self, bot: Bot, update: Update | dict[str, Any], **kwargs: Any) -> Any:
         if not isinstance(update, Update):
