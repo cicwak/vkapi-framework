@@ -30,7 +30,8 @@ class StateFilter:
         allowed: set[str | None] = set()
         for state in states:
             if isinstance(state, type):
-                allowed.update(item.state for item in state.__states__)
+                group_states: tuple[State, ...] = state.__states__  # pyrefly: ignore [missing-attribute]
+                allowed.update(item.state for item in group_states)
                 continue
             allowed.add(state_to_str(state))
         return allowed
